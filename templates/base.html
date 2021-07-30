@@ -31,7 +31,55 @@
     <title>Boxing Gym {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top"></header>
+    <div class="container-fluid fixed-top">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-4">Boxing Gym</span>
+        </a>
+  
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase" aria-current="page">Join us</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase">Classes</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase">Shop</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase">Contact</a></li>
+          <li class="list-inline-item dropdown">
+            <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="text-center">
+                    <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                    <p class="my-0">My Account</p>
+                </div>
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                        <a href="" class="dropdown-item">Product Management</a>
+                    {% endif %}
+                    <a href="" class="dropdown-item">My Profile</a>
+                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                {% else %}
+                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                {% endif %}
+            </div>
+        </li>
+        <li class="list-inline-item">
+          <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+              <div class="text-center">
+                  <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                  <p class="my-0">
+                      {% if grand_total %}
+                          ${{ grand_total|floatformat:2 }}
+                      {% else %}
+                          $0.00
+                      {% endif %}
+                  </p>
+              </div>
+          </a>
+        </li>
+        </ul>
+      </header>
+    </div>
     
     {% if messages %}
         <div class="message-container"></div>
