@@ -48,10 +48,9 @@
           <li class="nav-item"><a href="#" class="nav-link text-uppercase">Classes</a></li>
           <li class="nav-item"><a href="#" class="nav-link text-uppercase">Shop</a></li>
           <li class="nav-item"><a href="#" class="nav-link text-uppercase">Contact</a></li>
-          <li class="list-inline-item dropdown">
+          <li class="nav-item dropdown">
             <a class="text-black nav-link" href="#" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="text-center">
-                    <div><i class="fas fa-shopping-cart fa-lg"></i></div>
                     <p class="my-0">My Account</p>
                 </div>
             </a>
@@ -68,7 +67,7 @@
                 {% endif %}
             </div>
         </li>
-        <li class="list-inline-item">
+        <li class="nav-item">
           <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
               <div class="text-center">
                   <div><i class="fas fa-shopping-bag fa-lg"></i></div>
@@ -95,6 +94,12 @@
 
     {% block content %}
     {% endblock %}
+
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
 
     {% block postloadjs %}
     {% endblock %}
