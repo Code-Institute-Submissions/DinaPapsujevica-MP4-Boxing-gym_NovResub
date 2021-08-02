@@ -63,15 +63,21 @@ body {
     width: 4rem;
     height: 4rem;
     margin-bottom: 1rem;
-    font-size: 2rem;
-    color: #fff;
+    font-size: 3rem;
+    color: rgba(179, 38, 38, 0.925);
     border-radius: .75rem;
   }
   
   .icon-link {
     display: inline-flex;
     align-items: center;
+    color: rgba(179, 38, 38, 0.925);
   }
+
+  .icon-link:hover {
+      color: white;
+  }
+
   .icon-link > .bi {
     margin-top: .125rem;
     margin-left: .125rem;
