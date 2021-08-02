@@ -36,18 +36,17 @@
     <title>Boxing Gym {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <div class="container-fluid fixed-top">
-      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <div class="container">
+      <header class="d-flex flex-wrap justify-content-center py-2">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
           <span class="fs-4">Boxing Gym</span>
         </a>
   
-        <ul class="nav nav-pills">
-          <li class="nav-item"><a href="#" class="nav-link text-uppercase" aria-current="page">Join us</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-uppercase">Classes</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-uppercase">Shop</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-uppercase">Contact</a></li>
+        <ul class="nav nav-pills ">
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-dark" aria-current="page">Join us</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-dark">Classes</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-dark">Shop</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-dark">Contact</a></li>
           <li class="nav-item dropdown">
             <a class="text-black nav-link" href="#" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="text-center">
@@ -70,14 +69,7 @@
         <li class="nav-item">
           <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
               <div class="text-center">
-                  <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                  <p class="my-0">
-                      {% if grand_total %}
-                          ${{ grand_total|floatformat:2 }}
-                      {% else %}
-                          $0.00
-                      {% endif %}
-                  </p>
+                  <div><i class="fas fa-shopping-cart fa-lg"></i></div>
               </div>
           </a>
         </li>

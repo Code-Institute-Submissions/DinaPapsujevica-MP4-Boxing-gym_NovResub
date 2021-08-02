@@ -2,27 +2,20 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col">
-                
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
 {% block content %}
-    <div class="px-4 py-5 my-5 text-center">
-        <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-        <h1 class="display-5 fw-bold">YOUR FAVOURITE BOXING GYM</h1>
-        <div class="col-lg-6 mx-auto">
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center pb-3">
-            <button type="button" class="btn btn-outline-primary btn-lg px-4 gap-3 text-uppercase">Join now</button>
-          </div>
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4 text-uppercase">Sign up for free Trial</button>
-          </div>
+
+    <div class="hero-image text-center">
+      <div class=" hero-text col-lg-6 mx-auto">
+        <h1 class="pb-5 display-5 fw-bold text-uppercase text-light text-center">Your favourite boxing gym</h1>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center pb-4">
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4 gap-3 text-uppercase text-light">Join now</button>
         </div>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4 text-uppercase text-light">Sign up for free Trial</button>
+        </div>
+      </div>
     </div>
     <div class="container px-4 py-5" id="featured-3">
         <h2 class="pb-2 text-uppercase text-center">Our group training</h2>
@@ -136,4 +129,19 @@
           </div>
         </div>
       </div>
+    
+      <script>
+        var video = document.getElementById("myVideo");
+        var btn = document.getElementById("myBtn");
+        
+        function myFunction() {
+          if (video.paused) {
+            video.play();
+            btn.innerHTML = "Pause";
+          } else {
+            video.pause();
+            btn.innerHTML = "Play";
+          }
+        }
+        </script>
 {% endblock %}
