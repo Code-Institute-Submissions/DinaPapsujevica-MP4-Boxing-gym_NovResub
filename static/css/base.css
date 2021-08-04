@@ -105,6 +105,23 @@ body {
     font-weight: bold;
   }
 
+  /*  Plans */
+  .btn-combo,
+  .btn-plan:hover {
+    background-color: rgba(179, 38, 38, 0.925);
+    color: white;
+  }
+
+  .btn-plan {
+    border-color: rgba(179, 38, 38, 0.925);
+    color: rgba(179, 38, 38, 0.925);
+  }
+
+  .btn-combo:hover {
+    background-color: white;
+    color: rgba(179, 38, 38, 0.925);;
+  }
+ 
   .social-icons {
     list-style-type: none;
     
