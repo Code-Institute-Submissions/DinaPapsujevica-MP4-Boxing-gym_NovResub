@@ -38,17 +38,17 @@
   <body>
     <div class="container">
       <header class="d-flex flex-wrap justify-content-center py-2">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-light text-decoration-none">
           <span class="fs-4">Boxing Gym</span>
         </a>
   
         <ul class="nav nav-pills ">
-          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-dark" aria-current="page">Join us</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-dark">Classes</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-dark">Shop</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-dark">Contact</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-light" aria-current="page">Join us</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-light">Classes</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-light">Shop</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-light">Contact</a></li>
           <li class="nav-item dropdown">
-            <a class="text-black nav-link" href="#" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="text-light nav-link" href="#" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="text-center">
                     <p class="my-0">My Account</p>
                 </div>
@@ -69,7 +69,7 @@
         <li class="nav-item">
           <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
               <div class="text-center">
-                  <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                  <div><i class="fas fa-shopping-cart fa-lg text-light"></i></div>
               </div>
           </a>
         </li>
@@ -87,9 +87,25 @@
     {% block content %}
     {% endblock %}
 
-    <footer class="footer mt-auto py-3 bg-light">
+    <footer class="footer mt-auto py-2 text-light border-top">
       <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
+        <div class="row">
+          <div class="col-6">
+            <ul class="nav nav-pills ">
+              <li class="nav-item"><a href="#" class="nav-link text-uppercase text-light" aria-current="page">Join us</a></li>
+              <li class="nav-item"><a href="#" class="nav-link text-uppercase text-light">Classes</a></li>
+              <li class="nav-item"><a href="#" class="nav-link text-uppercase text-light">Shop</a></li>
+              <li class="nav-item"><a href="#" class="nav-link text-uppercase text-light">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <ul class="col-12 social-icons">
+              <li><a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
+              <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+              <li><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+          </div>
+        </div>
       </div>
     </footer>
 

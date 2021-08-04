@@ -5,6 +5,7 @@ html {
 body {
     color: #000;
     font-family: 'Lato';
+    background-color: #000;
 }
 
 /*  Header */
@@ -86,6 +87,34 @@ body {
   }
   .icon-link:hover > .bi {
     transform: translate(.25rem);
+  }
+
+  /*  Testimonials */
+  .testimonials-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/media/testimonials.jpg);
+    height: 90vh;
+    width: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  .member-name {
+    color:rgba(179, 38, 38, 0.925);
+    font-weight: bold;
+  }
+
+  .social-icons {
+    list-style-type: none;
+    
+  }
+
+  .social-icons a {
+    color: white;
+    font-size: 24px;
+    float: right;
+    letter-spacing: 20px;
   }
 
 /* from project BA */
