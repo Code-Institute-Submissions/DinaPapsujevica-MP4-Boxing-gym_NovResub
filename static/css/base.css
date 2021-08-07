@@ -113,13 +113,23 @@ body {
   }
 
   .btn-plan {
-    border-color: rgba(179, 38, 38, 0.925);
-    color: rgba(179, 38, 38, 0.925);
+    border-color: white;
+    color: white;
   }
 
   .btn-combo:hover {
     background-color: white;
-    color: rgba(179, 38, 38, 0.925);;
+    border-color: rgba(179, 38, 38, 0.925);
+    color: rgba(179, 38, 38, 0.925);
+  }
+
+  .card-plans {
+    height: 400px;
+    background-color: transparent;
+  }
+  
+  .card-combo {
+    height: 400px;
   }
  
   .social-icons {
