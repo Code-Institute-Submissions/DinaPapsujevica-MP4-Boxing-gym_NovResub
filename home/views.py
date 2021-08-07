@@ -8,12 +8,20 @@ def index(request):
 
     return render(request, 'home/index.html')
 
+
 def fitnessplans(request):
     """ A view to return the fitnessplans page """
 
     return render(request, 'home/fitnessplans.html')
 
+
 def trial(request):
     """ A view to show trial sign up page """
 
     return render(request, 'home/trial.html')
+
+
+def classes(request):
+    """ A view to show trial sign up page """
+
+    return render(request, 'home/classes.html')
