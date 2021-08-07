@@ -13,8 +13,7 @@ def fitnessplans(request):
 
     return render(request, 'home/fitnessplans.html')
 
+def trial(request):
+    """ A view to show trial sign up page """
 
-def products(request):
-    """ A view to show all products """
-
-    return render(request, 'home/products.html')
+    return render(request, 'home/trial.html')
