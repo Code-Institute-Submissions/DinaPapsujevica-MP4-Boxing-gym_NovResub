@@ -139,7 +139,7 @@ body {
   /* Trial sign up */
   .form-signin {
     width: 100%;
-    max-width: 330px;
+    max-width: 600px;
     padding: 15px;
     margin: auto;
   }
@@ -163,7 +163,19 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
+   /* Classes */
+  .class-text {
+    color:rgba(179, 38, 38, 0.925);
+  }
   /* Footer */
+
+  .container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+  }
+
   .social-icons {
     list-style-type: none;
     
@@ -223,12 +235,6 @@ body {
     border: 1px solid black !important;
 }
 
-/*  Footer */
-.container {
-    width: auto;
-    max-width: 680px;
-    padding: 0 15px;
-  }
 
 /* -------------------------------- Media Queries */
 
