@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="pb-5 pt-5 text-uppercase text-light text-center">Enter Stripe Card Detail</h2>
+                <main class="form-signin">
+                    <form action="{% url 'checkout' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-floating mb-3">
+                          <input type="text" name="cardnumber" class="form-control" id="floatingInput"
+                                 placeholder="Enter 16 digit Card Number" required autofocus >
+                          <label for="floatingPassword">Enter 16 digit Card Number</label>
+                      </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="expyear"
+                                   placeholder="Enter card expiry year date last two digit YY" required>
+                            <label for="floatingPassword">Enter card expiry year date last two digit YY</label>
+                      </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="expmonth"
+                                   placeholder="Enter card expiry month MM" required>
+                            <label for="floatingPassword">Enter card expiry month MM</label>
+                      </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingInput"
+                                   name="card_cvv" placeholder="Enter card CVV number " required>
+                            <label for="floatingPassword">Enter card CVV number</label>
+                      </div>
+                      <button type="submit" class="w-100 btn btn-lg btn-combo text-uppercase">Pay and Subscribe</button>
+                    </form>
+                  </main>
+            </div>
+        </div>
+    </div>
+{% endblock %}

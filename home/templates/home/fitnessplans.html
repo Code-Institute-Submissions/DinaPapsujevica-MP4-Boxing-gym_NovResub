@@ -10,57 +10,73 @@
             <main>
               <div class="row row-cols-1 row-cols-md-3 mb-3 text-center pt-4">
                 <div class="col">
-                  <div class="card mb-4 rounded-3 shadow-sm card-plans border-secondary text-light">
-                    <div class="card-header py-3 border-bottom">
-                      <h4 class="my-0 fw-normal text-uppercase">Fitness boxing</h4>
-                    </div>
-                    <div class="card-body">
-                      <h1 class="card-title pricing-card-title">Eur 50<small class="text-muted fw-light">/mo</small></h1>
-                      <ul class="list-unstyled mt-5 mb-5">
-                        <li>Unlimited Fitness boxing classes</li>
-                        <li>Professional trainer consultation</li>
-                        <li>Special member price in our shop</li>
-                        <li>Free parking</li>
-                      </ul>
-                      <button type="button" class="w-100 btn btn-lg btn-plan text-uppercase">Choose plan</button>
-                    </div>
-                  </div>
+                    <form action="{% url 'fitnessplans' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="name" value="Fitness boxing">
+                        <input type="hidden" name="price" value="50">
+                          <div class="card mb-4 rounded-3 shadow-sm card-plans border-secondary text-light">
+                            <div class="card-header py-3 border-bottom">
+                              <h4 class="my-0 fw-normal text-uppercase">Fitness boxing</h4>
+                            </div>
+                            <div class="card-body">
+                              <h1 class="card-title pricing-card-title">Eur 50<small class="text-muted fw-light">/mo</small></h1>
+                              <ul class="list-unstyled mt-5 mb-5">
+                                <li>Unlimited Fitness boxing classes</li>
+                                <li>Professional trainer consultation</li>
+                                <li>Special member price in our shop</li>
+                                <li>Free parking</li>
+                              </ul>
+                              <button type="submit" class="w-100 btn btn-lg btn-plan text-uppercase">Choose plan</button>
+                            </div>
+                          </div>
+                    </form>
                 </div>
                 <div class="col">
-                  <div class="card mb-4 rounded-3 shadow-sm card-combo">
-                    <div class="card-header  py-3">
-                      <h4 class="my-0 fw-normal text-uppercase">Combo</h4>
-                    </div>
-                    <div class="card-body">
-                      <h1 class="card-title pricing-card-title">Eur 75<small class="text-muted fw-light">/mo</small></h1>
-                      <ul class="list-unstyled mt-5 mb-5">
-                        <li>Fitness boxing + Thaiboxing classes</li>
-                        <li>Professional trainer consultation</li>
-                        <li>Special member price in our shop</li>
-                        <li>Free parking</li>
-                      </ul>
-                      <button type="button" class="w-100 btn btn-lg btn-combo text-uppercase">Choose plan</button>
-                    </div>
-                  </div>
+                    <form action="{% url 'fitnessplans' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="name" value="Fitness boxing">
+                        <input type="hidden" name="price" value="75">
+                          <div class="card mb-4 rounded-3 shadow-sm card-combo">
+                            <div class="card-header  py-3">
+                              <h4 class="my-0 fw-normal text-uppercase">Combo</h4>
+                            </div>
+                            <div class="card-body">
+                              <h1 class="card-title pricing-card-title">Eur 75<small class="text-muted fw-light">/mo</small></h1>
+                              <ul class="list-unstyled mt-5 mb-5">
+                                <li>Fitness boxing + Thaiboxing classes</li>
+                                <li>Professional trainer consultation</li>
+                                <li>Special member price in our shop</li>
+                                <li>Free parking</li>
+                              </ul>
+                              <button type="submit" class="w-100 btn btn-lg btn-combo text-uppercase">Choose plan</button>
+                            </div>
+                          </div>
+                    </form>
                 </div>
                 <div class="col">
-                  <div class="card mb-4 rounded-3 shadow-sm card-plans border-secondary text-light">
-                    <div class="card-header py-3 border-bottom">
-                      <h4 class="my-0 fw-normal text-uppercase">Thaiboxing</h4>
-                    </div>
-                    <div class="card-body">
-                      <h1 class="card-title pricing-card-title">Eur 50<small class="text-muted fw-light">/mo</small></h1>
-                      <ul class="list-unstyled mt-5 mb-5">
-                        <li>Unlimited Thaiboxing classes</li>
-                        <li>Professional trainer consultation</li>
-                        <li>Special member price in our shop</li>
-                        <li>Free parking</li>
-                      </ul>
-                      <button type="button" class="w-100 btn btn-lg btn-plan text-uppercase">Choose plan</button>
-                    </div>
-                  </div>
+                    <form action="{% url 'fitnessplans' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="name" value="Thaiboxing">
+                        <input type="hidden" name="price" value="50">
+                          <div class="card mb-4 rounded-3 shadow-sm card-plans border-secondary text-light">
+                            <div class="card-header py-3 border-bottom">
+                              <h4 class="my-0 fw-normal text-uppercase">Thaiboxing</h4>
+                            </div>
+                            <div class="card-body">
+                              <h1 class="card-title pricing-card-title">Eur 50<small class="text-muted fw-light">/mo</small></h1>
+                              <ul class="list-unstyled mt-5 mb-5">
+                                <li>Unlimited Thaiboxing classes</li>
+                                <li>Professional trainer consultation</li>
+                                <li>Special member price in our shop</li>
+                                <li>Free parking</li>
+                              </ul>
+                              <button type="submit" class="w-100 btn btn-lg btn-plan text-uppercase">Choose plan</button>
+                            </div>
+                          </div>
+                    </form>
                 </div>
               </div>
+            </main>
         </div>
     </div>
     <div class="row pt-5 pb-5 text-light text-center">
