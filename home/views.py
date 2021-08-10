@@ -57,15 +57,14 @@ def create_stripe_subsription(request):
         card_cvv = request.POST['card_cvv']
         card_number = str(card_number).strip()
         print(card_number, card_expyear, card_expmonth, card_cvv)
-        email = request.session['signup_user']
+        email = "ashutsh@gmail.com"
         token_data = generate_card_token(email, card_number, card_expmonth, card_expyear, card_cvv)
         product = subscription['product_id']
-        interval = {'yearly': 'year', 'monthly': 'month'}[subscription['name']]
-        price_id = create_stripe_price(amount=subscription['amount'], interval=interval, product=product)
+        price_id = create_stripe_price(amount=subscription['amount'], interval='month', product=product)
         sub = stripe_subscription(csid=token_data['customer_id'], price_id=price_id)
 
         sub_data = dict(customer_id=subscription['customer_id'], name=subscription['name'],
-                        amount=subscription['amount'], promocode=subscription['promocode'], status=True,
+                        amount=subscription['amount'], status=True,
                         method='stripe', payment_id=sub['id'])
         # Subscription.objects.create(**sub_data)
         return JsonResponse({'success': True, "subscription_id": sub['id']})
