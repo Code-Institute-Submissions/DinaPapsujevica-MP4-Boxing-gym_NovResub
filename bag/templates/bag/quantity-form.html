@@ -1,0 +1,31 @@
+<form class="form update-form text-light" method="POST" action="{% url 'adjust_bag' %}">
+    {% csrf_token %}
+    <input type="hidden" name="pid" value="{{ item.pid }}">
+    <input type="hidden" name="price" value="{{ item.price }}">
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+               <button type="button" class="decrement-qty btn btn-black rounded-0"
+                       id="sub" onclick="decremaentValue()" data-item_id="{{ item.id }}">
+                   <span class="icon"><i class="fas fa-minus"></i></span></button>
+            </div>
+            <input class="form-control qty_input" type="number" id="number"
+                                                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                data-item_id="{{ item.pid }}">
+            <div class="input-group-append">
+                <button type="button" class="increment-qty btn btn-black rounded-0"
+                                                    id="add" onclick="incrementValue()"
+                                                data-item_id="{{ item.id }}">
+                                                <span class="icon">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                                            </button>
+            </div>
+            {% if item.sizes %}
+                <input type="hidden" name="product_size" value="{{ item.size }}">
+            {% endif %}
+        </div>
+    </div><br>
+ <button type="submit" class="btn btn-info btn-sm">Update</button>
+    <a href="{% url 'delete_item' pid=item.pid %}"> <button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+</form>

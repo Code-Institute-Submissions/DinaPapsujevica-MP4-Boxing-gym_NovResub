@@ -90,4 +90,4 @@ def view_products(request):
 
 def product_detail(request, product_id):
     product = Product.objects.get(id=int(product_id))
-    return render(request, 'home/product_detail.html', {'products': product})
+    return render(request, 'home/product_detail.html', {'product': product})

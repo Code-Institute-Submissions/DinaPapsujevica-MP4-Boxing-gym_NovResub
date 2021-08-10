@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load bag_tools %}
 
 {% block page_header %}
 {% endblock %}
@@ -41,7 +40,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6 order-sm-last">
                                     <p class="my-0">Price Each: ${{ item.product.price }}</p>
-                                    <p><strong>Subtotal: </strong>${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                    <p><strong>Subtotal: </strong>${{ item.product.price }}</p>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     {% include "bag/quantity-form.html" %}
@@ -76,13 +75,13 @@
                                         {% include "bag/product-info.html" %}
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">${{ item.product.price }}</p>
+                                        <p class="my-0">${{ item.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
                                         {% include "bag/quantity-form.html" %}
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                        <p class="my-0">${{ item.price  }}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -110,36 +109,32 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+       function incrementValue()
+        {
+            var value = parseInt(document.getElementById('number').value);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            console.log("vawlnvkbnkvbakwlvbkjawbvkabvkbaskvbakjvbkjavbkjabvavkcbwksvbkl",document.getElementById('number').value)
+            document.getElementById('number').value = value;
+        }
+
+        function decremaentValue()
+        {
+            var value = parseInt(document.getElementById('number').value);
+            value = isNaN(value) ? 0 : value;
+            value--;
+            if (value < 1) {
+                new_val = 1;
+            } else {
+                new_val = value;
+            }
+
+            document.getElementById('number').value = new_val;
+        }
+    </script>
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
-    $('.btt-link').click(function(e) {
-        window.scrollTo(0,0)
-    })
-</script>
-{% include 'products/includes/quantity_input_script.html' %}
-
-<script type="text/javascript">
-    // Update quantity on click
-    $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
-
-    // Remove item and reload on click
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var size = $(this).data('product_size');
-        var url = `/bag/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
-
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
-</script>
 {% endblock %}
