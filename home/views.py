@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .subscription import *
 from django.http import HttpResponseRedirect, JsonResponse
+from .forms import *
+from .models import *
 
 
 # Create your views here.
@@ -10,12 +12,6 @@ def index(request):
     """ A view to return the index page """
 
     return render(request, 'home/index.html')
-
-
-def fitnessplans(request):
-    """ A view to return the fitnessplans page """
-
-    return render(request, 'home/fitnessplans.html')
 
 
 def trial(request):
@@ -70,3 +66,18 @@ def create_stripe_subsription(request):
         return JsonResponse({'success': True, "subscription_id": sub['id']})
 
     return render(request, 'home/payment.html')
+
+
+def add_product(request):
+    context = {}
+    user = User.objects.get(id=request.user.id)
+    form = ProductForm()
+    if request.method == 'POST':
+        data = request.POST.dict()
+        del data['csrfmiddlewaretoken']
+        data['image_link'] = request.FILES.get('image_link')
+        data['user_id'] = request.user.id
+        product = Product.objects.create(**data)
+        return JsonResponse({'success': True, "msg": 'form saved'})
+    context['form'] = form
+    return render(request, "home/add_product.html", context)

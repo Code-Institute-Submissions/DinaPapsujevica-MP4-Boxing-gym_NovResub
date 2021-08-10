@@ -8,4 +8,5 @@ urlpatterns = [
     path('classes/', views.classes, name='classes'),
     path('fitnessplans/', views.select_subscription, name='fitnessplans'),
     path('checkout/', views.create_stripe_subsription, name='checkout'),
+    path('addproduct/', views.add_product, name='add_product'),
 ]
