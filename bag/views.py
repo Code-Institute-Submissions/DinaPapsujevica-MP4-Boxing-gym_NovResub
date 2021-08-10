@@ -32,7 +32,8 @@ def add_to_bag(request, product_id):
         shipping_price = '%.2f' % 3 if subtotal < 45 else 0
         total = '%.2f' % total
         subtotal = '%.2f' % subtotal
-        cart_data = dict(name=product_data.name, image_link=image, quantity=quantity, pid=product_id, price=price,
+        cart_data = dict(name=product_data.name, sku=product_data.sku, size=product_data.sizes,
+                         image_link=image, quantity=quantity, pid=product_id, price=price,
                          subtotal=subtotal, total=total, shipping_price=shipping_price)
         cart_result = [] if 'cart' not in request.session else request.session['cart']
         cart_result.append(cart_data)
@@ -83,7 +84,8 @@ def update_bag(request):
         shipping_price = '%.2f' % 3 if subtotal < 45 else 0
         total = '%.2f' % total
         subtotal = '%.2f' % subtotal
-        cart_data = dict(name=product_data.name, image_link=image, quantity=quantity, pid=product_id, price=price,
+        cart_data = dict(name=product_data.name, sku=product_data.sku, size=product_data.sizes, image_link=image,
+                         quantity=quantity, pid=product_id, price=price,
                          subtotal=subtotal, total=total, shipping_price=shipping_price)
 
         cart_result = request.session['cart']

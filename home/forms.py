@@ -5,7 +5,7 @@ from django import forms
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('category', 'image_link',
+        fields = ('category', 'image_link', 'sku',
                   'name', 'sizes', 'price', 'description')
 
         widgets = {
@@ -13,6 +13,8 @@ class ProductForm(forms.ModelForm):
                                                                                                    'category'}),
             'name': forms.TextInput(attrs={'size': 50, 'class': 'form-control', 'placeholder': 'Enter product '
                                                                                                'name'}),
+            'sku': forms.TextInput(attrs={'size': 50, 'class': 'form-control', 'placeholder': 'Enter product '
+                                                                                              'Id'}),
             'sizes': forms.TextInput(attrs={'size': 50, 'class': 'form-control', 'placeholder': 'Enter available '
                                                                                                 'sizes'}),
             'price': forms.TextInput(
