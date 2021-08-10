@@ -81,3 +81,13 @@ def add_product(request):
         return JsonResponse({'success': True, "msg": 'form saved'})
     context['form'] = form
     return render(request, "home/add_product.html", context)
+
+
+def view_products(request):
+    products = Product.objects.all()
+    return render(request, 'home/products.html', {'products': products})
+
+
+def product_detail(request, product_id):
+    product = Product.objects.get(id=int(product_id))
+    return render(request, 'home/product_detail.html', {'products': product})
