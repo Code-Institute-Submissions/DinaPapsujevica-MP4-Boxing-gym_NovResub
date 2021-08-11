@@ -40,7 +40,7 @@ def select_subscription(request):
                                                product_id=product)
 
         print("request.session['subscription']", request.session['subscription'])
-        return HttpResponseRedirect('/checkout/')
+        return HttpResponseRedirect('/subscribe/')
 
     return render(request, 'home/fitnessplans.html')
 
@@ -66,8 +66,7 @@ def create_stripe_subsription(request):
         sub_data = dict(customer_id=subscription['customer_id'], name=subscription['name'],
                         amount=subscription['amount'], status=True,
                         method='stripe', payment_id=sub['id'])
-        # Subscription.objects.create(**sub_data)
-        return JsonResponse({'success': True, "subscription_id": sub['id']})
+        return HttpResponseRedirect('/classes')
 
     return render(request, 'home/payment.html')
 

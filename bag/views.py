@@ -2,7 +2,7 @@ from django.shortcuts import render
 from home.models import *
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
-
+from home.subscription import generate_card_token, create_payment_charge
 
 # Create your views here.
 
@@ -49,7 +49,6 @@ def add_to_bag(request, product_id):
         grand_total = '%.2f' % grand_total
         request.session['bag_total'] = bag_total
         request.session['grand_total'] = grand_total
-        request.session['shipping_price'] = '%.2f' % 3 if float(bag_total) < 45 else '0.00'
         has_item = True if len(cart_result) > 0 else False
         request.session['has_item'] = has_item
         return HttpResponseRedirect('/bags')
@@ -70,7 +69,6 @@ def delete_from_shopping_bag(request, pid):
     grand_total = '%.2f' % grand_total
     request.session['bag_total'] = bag_total
     request.session['grand_total'] = grand_total
-    request.session['shipping_price'] = '%.2f' % 3 if float(bag_total) < 45 else '0.00'
 
     return HttpResponseRedirect('/bags')
 
@@ -100,7 +98,6 @@ def update_bag(request):
                 d['quantity'] = quantity
                 d['subtotal'] = subtotal
                 d['total'] = total
-                d['shipping_price'] = shipping_price
             new_result.append(d)
 
         print("***************************")
@@ -115,10 +112,38 @@ def update_bag(request):
         grand_total = '%.2f' % grand_total
         request.session['bag_total'] = bag_total
         request.session['grand_total'] = grand_total
-        request.session['shipping_price'] = '%.2f' % 3 if float(bag_total) > 45 else '0.00'
         has_item = True if len(cart_data) > 0 else False
         request.session['has_item'] = has_item
         return HttpResponseRedirect('/bags')
+
+
+@login_required
+def checkout_stripe_payment(request):
+    """ A request api to handle stripe payment form stripe """
+
+    if request.method == 'POST':
+        card_number = request.POST['cardnumber']
+        card_expyear = request.POST['expyear']
+        card_expmonth = request.POST['expmonth']
+        card_cvv = request.POST['card_cvv']
+        card_number = str(card_number).strip()
+        print(card_number, card_expyear, card_expmonth, card_cvv)
+        email = request.user.email
+        token_data = generate_card_token(email, card_number, card_expmonth, card_expyear, card_cvv)
+        payment_done = create_payment_charge(token_data['card_token'], request.session['grand_total'])
+        if payment_done:
+            del request.session['cart']
+            del request.session['bag_total']
+            del request.session['grand_total']
+            del request.session['has_item']
+        return render(request, 'bag/thankyou.html')
+
+    return render(request, 'bag/checkout.html', {'total': request.session['grand_total']})
+
+
+@login_required
+def complete_shoping(request):
+    return render(request, 'bag/thankyou.html')
 
 
 def merge(dict1, dict2):

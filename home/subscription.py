@@ -34,7 +34,7 @@ def generate_card_token(email, cardnumber, expmonth, expyear, cvv):
 
 def create_payment_charge(tokenid, amount):
     payment = stripe.Charge.create(
-        amount=int(amount) * 100,  # convert amount to cents
+        amount=int(float(amount)) * 100,  # convert amount to cents
         currency='usd',
         description='Example charge',
         source=tokenid,
