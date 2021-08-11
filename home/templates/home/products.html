@@ -5,12 +5,8 @@
 {% endblock %}
 
 {% block content %}
+    <a href="{% url 'add_product' %}"> <button type="button" class="btn btn-primary btn-sm">Add new product</button></a>
     <div class="container-fluid">
-        <div class="row text-light">
-            <div class="col text-center mt-3">
-                <h2 class="pb-5 pt-5 text-uppercase text-light text-center">Shop</h2>
-            </div>
-        </div>
         <div class="row text-dark">
             <div class="product-container col-10 offset-1">
                 <div class="row">
@@ -34,10 +30,10 @@
                                         <div class="col">
                                             <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                                             {% if request.user.is_superuser %}
-                                                <small class="ml-3">
-                                                    <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                                                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                                                </small>
+                                                <div class="text-right">
+                                                    <a href="{% url 'edit_product' product.id %}"> <button type="button" class="btn btn-primary btn-sm">Edit</button></a>
+                                                    <a href="{% url 'delete_product' product.id %}"> <button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+                                                </div>
                                             {% endif %}
                                         </div>
                                     </div>

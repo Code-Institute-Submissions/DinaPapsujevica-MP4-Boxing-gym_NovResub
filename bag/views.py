@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from home.models import *
 from django.http import HttpResponseRedirect, JsonResponse
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
-
+@login_required
 def view_shopping_bag(request):
     """
     View that renders the shopping bag page  which show the product that has been added to cart
@@ -19,6 +20,7 @@ def view_shopping_bag(request):
     return render(request, 'bag/bag.html', {'bag_items': cart_data, 'has_item': has_item})
 
 
+@login_required
 def add_to_bag(request, product_id):
     """ Add a quantity of the specified product to the shoppingbag """
 
@@ -53,6 +55,7 @@ def add_to_bag(request, product_id):
         return HttpResponseRedirect('/bags')
 
 
+@login_required
 def delete_from_shopping_bag(request, pid):
     """Delete the item from the shopping bag"""
     cart_list = request.session['cart']
@@ -72,6 +75,7 @@ def delete_from_shopping_bag(request, pid):
     return HttpResponseRedirect('/bags')
 
 
+@login_required
 def update_bag(request):
     if request.method == 'POST':
         quantity = request.POST.get('quantity')
