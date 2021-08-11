@@ -8,9 +8,8 @@ body {
     background-color: #000;
 }
 
-/*  Header */
+/* -------------------------------- Hero section */
 
-/*  Hero section */
 .hero-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/media/hero1-2.jpg);
     
@@ -31,8 +30,8 @@ body {
     transform: translate(-50%, -50%);
     color: white;
   }
-  
-  /*  Features */
+
+/* -------------------------------- Features */
   .features-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/media/features.jpg);
     height: 90vh;
@@ -89,7 +88,7 @@ body {
     transform: translate(.25rem);
   }
 
-  /*  Testimonials */
+/* -------------------------------- Testimonials */
   .testimonials-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/media/testimonials.jpg);
     height: 90vh;
@@ -105,7 +104,7 @@ body {
     font-weight: bold;
   }
 
-  /*  Plans */
+/* -------------------------------- Plans */
   .btn-combo,
   .btn-plan:hover {
     background-color: rgba(179, 38, 38, 0.925);
@@ -132,11 +131,11 @@ body {
     height: 400px;
   }
 
-  /* Products */
+ 
+/* -------------------------------- Products */
 
   
- 
-  /* Trial sign up */
+/* -------------------------------- Trial sign up */
   .form-signin {
     width: 100%;
     max-width: 600px;
@@ -164,29 +163,36 @@ body {
     border-top-right-radius: 0;
   }
 
-   /* Classes */
+/* -------------------------------- Classes */
   .class-text {
     color:rgba(179, 38, 38, 0.925);
   }
-  /* Footer */
+  
+/* -------------------------------- Profile */
+.order-history {
+  max-height: 416px; /* height of profile form + submit button */
+  overflow-y: auto;
+}
 
-  .container {
-    width: auto;
-    max-width: 680px;
-    padding: 0 15px;
-  }
 
-  .social-icons {
-    list-style-type: none;
-    
-  }
+/* -------------------------------- Footer */
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
 
-  .social-icons a {
-    color: white;
-    font-size: 24px;
-    float: right;
-    letter-spacing: 20px;
-  }
+.social-icons {
+  list-style-type: none;
+  
+}
+
+.social-icons a {
+  color: white;
+  font-size: 24px;
+  float: right;
+  letter-spacing: 20px;
+}
 
 /* from project BA */
 /* from Bulma */

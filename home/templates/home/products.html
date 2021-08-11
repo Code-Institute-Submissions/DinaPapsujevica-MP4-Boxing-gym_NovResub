@@ -11,12 +11,12 @@
                 <h2 class="pb-5 pt-5 text-uppercase text-light text-center">Shop</h2>
             </div>
         </div>
-        <div class="row text-dark">
+        <div class="row text-dark pb-5">
             <div class="product-container col-10 offset-1">
                 <div class="row">
                     {% for product in products %}
                         <div class="col-sm-6 col-md-6 col-lg-4">
-                            <div class="card h-100 border-0">
+                            <div class="card h-100 border-light">
                                 {% if product.image_link %}
                                 <a href="{% url 'product_detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ product.image_link.url }}" alt="{{ product.name }}">
