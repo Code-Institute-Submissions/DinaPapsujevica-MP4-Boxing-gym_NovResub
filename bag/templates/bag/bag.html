@@ -107,18 +107,18 @@
         </div>
     </div>
     <script type="text/javascript">
-       function incrementValue()
+       function incrementValue(pid)
         {
-            var value = parseInt(document.getElementById('number').value);
+            var value = parseInt(document.getElementById(pid).value);
             value = isNaN(value) ? 0 : value;
             value++;
-            console.log("vawlnvkbnkvbakwlvbkjawbvkabvkbaskvbakjvbkjavbkjabvavkcbwksvbkl",document.getElementById('number').value)
-            document.getElementById('number').value = value;
+            console.log("vawlnvkbnkvbakwlvbkjawbvkabvkbaskvbakjvbkjavbkjabvavkcbwksvbkl",pid)
+            document.getElementById(pid).value = value;
         }
 
-        function decremaentValue()
+        function decremaentValue(pid)
         {
-            var value = parseInt(document.getElementById('number').value);
+            var value = parseInt(document.getElementById(pid).value);
             value = isNaN(value) ? 0 : value;
             value--;
             if (value < 1) {
@@ -127,7 +127,7 @@
                 new_val = value;
             }
 
-            document.getElementById('number').value = new_val;
+            document.getElementById(pid).value = new_val;
         }
     </script>
 {% endblock %}

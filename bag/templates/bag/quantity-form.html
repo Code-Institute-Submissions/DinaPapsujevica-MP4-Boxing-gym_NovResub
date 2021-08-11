@@ -6,15 +6,15 @@
         <div class="input-group">
             <div class="input-group-prepend">
                <button type="button" class="decrement-qty btn btn-black rounded-0"
-                       id="sub" onclick="decremaentValue()" data-item_id="{{ item.id }}">
+                       id="sub" onclick="decremaentValue({{ item.pid }})" data-item_id="{{ item.id }}">
                    <span class="icon"><i class="fas fa-minus"></i></span></button>
             </div>
-            <input class="form-control qty_input" type="number" id="number"
+            <input class="form-control qty_input" type="number" id="{{ item.pid }}"
                                                 name="quantity" value="{{ item.quantity }}" min="1" max="99"
                                                 data-item_id="{{ item.pid }}">
             <div class="input-group-append">
                 <button type="button" class="increment-qty btn btn-black rounded-0"
-                                                    id="add" onclick="incrementValue()"
+                                                    id="add" onclick="incrementValue({{ item.pid }})"
                                                 data-item_id="{{ item.id }}">
                                                 <span class="icon">
                                                     <i class="fas fa-plus"></i>

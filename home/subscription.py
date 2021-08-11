@@ -40,9 +40,7 @@ def create_payment_charge(tokenid, amount):
         source=tokenid,
     )
 
-    payment_check = payment['paid']  # return True for payment
-
-    return payment_check
+    return {'id': payment['id'], 'paid': payment['paid']}
 
 
 def create_stripe_price(amount, interval, product):

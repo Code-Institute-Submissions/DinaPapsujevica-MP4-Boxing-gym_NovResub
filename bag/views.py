@@ -1,5 +1,8 @@
+import json
+import random
 from django.shortcuts import render
 from home.models import *
+from .models import *
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
 from home.subscription import generate_card_token, create_payment_charge
@@ -129,9 +132,19 @@ def checkout_stripe_payment(request):
         card_number = str(card_number).strip()
         print(card_number, card_expyear, card_expmonth, card_cvv)
         email = request.user.email
+        order_id = str(random.randint(123452, 984793))
         token_data = generate_card_token(email, card_number, card_expmonth, card_expyear, card_cvv)
         payment_done = create_payment_charge(token_data['card_token'], request.session['grand_total'])
         if payment_done:
+            order_info = dict(order_number=order_id,
+                              user_id=request.user.id,
+                              stripe_pid=payment_done['id'],
+                              original_bag=json.dumps(request.session['cart']),
+                              order_total=request.session['bag_total'],
+                              grand_total=request.session['grand_total']
+                              )
+
+            Order.objects.create(**order_info)
             del request.session['cart']
             del request.session['bag_total']
             del request.session['grand_total']
