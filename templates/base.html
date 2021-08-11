@@ -43,10 +43,10 @@
         </a>
   
         <ul class="nav nav-pills ">
-          <li class="nav-item"><a href="fitnessplans.html" class="nav-link text-uppercase text-light">Join us</a></li>
-          <li class="nav-item"><a href="classes.html" class="nav-link text-uppercase text-light">Classes</a></li>
-          <li class="nav-item"><a href="products.html" class="nav-link text-uppercase text-light">Shop</a></li>
-          <li class="nav-item"><a href="contact.html" class="nav-link text-uppercase text-light">Contact</a></li>
+          <li class="nav-item"><a href="{% url 'fitnessplans' %}" class="nav-link text-uppercase text-light">Join us</a></li>
+          <li class="nav-item"><a href="{% url 'classes' %}" class="nav-link text-uppercase text-light">Classes</a></li>
+          <li class="nav-item"><a href="{% url 'products' %}" class="nav-link text-uppercase text-light">Shop</a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-uppercase text-light">Contact</a></li>
           <li class="nav-item dropdown">
             <a class="text-light nav-link" href="#" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="text-center">
@@ -56,7 +56,7 @@
             <div class="dropdown-menu border-0" aria-labelledby="user-options">
                 {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
-                        <a href="" class="dropdown-item">Product Management</a>
+                        <a href="{% url 'products' %}" class="dropdown-item">Product Management</a>
                     {% endif %}
                     <a href="" class="dropdown-item">My Profile</a>
                     <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -67,9 +67,9 @@
             </div>
         </li>
         <li class="nav-item">
-          <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
+          <a class="{% if request.session.grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'bags' %}">
               <div class="text-center">
-                  <div><i class="fas fa-shopping-cart fa-lg text-light"></i></div>
+                  <div><i class="fas fa-shopping-cart fa-lg text-light"></i> $ {{ request.session.grand_total }}</div>
               </div>
           </a>
         </li>

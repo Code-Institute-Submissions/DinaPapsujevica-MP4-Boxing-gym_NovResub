@@ -15,23 +15,38 @@
             </div>
         </div>
 
-        <div class="row text-light">
+        <div class="row text-dark">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        {% if field.name != 'image' %}
-                            {{ field | as_crispy_field }}
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
-                    {% endfor %}
-                    <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Update Product</button>
-                    </div>
-                </form>
-            </div>            
+            <form class="signup" id="signup_form" method="post" action="{% url 'edit_product' product_id=product.id %}">
+              {% csrf_token %}
+                <div class="form-floating mb-3">
+                  <input type="text" name="category" value="{{ product.category }}" class="form-control" id="floatingInput" aria-describedby="emailHelp" placeholder="Product category">
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="name" name="name" value="{{ product.name }}" class="form-control" id="floatingInput" aria-describedby="emailHelp" placeholder="Product name">
+                </div>
+                <div class="form-floating mb-3">
+                    {% if product.image_link %}
+                        <img class="card-img-top img-fluid" src="{{ product.image_link.url }}" alt="{{ product.name }}">
+                    {% endif %}
+                    <input type="file" name="image_link" class="form-control" id="floatingInput" aria-describedby="emailHelp" placeholder="Product image">
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" name="sku" value="{{ product.sku }}" class="form-control" id="floatingInput" placeholder="Product code">
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" name="price" value="{{ product.price }}" class="form-control" id="floatingPassword" placeholder="Product price">
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" name="sizes" value="{{ product.sizes }}" class="form-control" id="floatingPassword" placeholder="Product sizes">
+                </div>
+                    <textarea rows="4" cols="20" name="description" class="form-control" id="floatingPassword" placeholder="Product description">{{ product.description }}</textarea><br>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-info btn-sm">Update</button>
+                    <a href="{% url 'products' %}"> <button type="button" class="btn btn-danger btn-sm">Cancel</button></a>
+                </div>
+            </form><br>
+            </div>
         </div>
     </div>
 {% endblock %}
