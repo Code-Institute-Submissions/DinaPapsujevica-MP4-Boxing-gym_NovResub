@@ -1,8 +1,10 @@
+import json
 from django.shortcuts import render
 from .subscription import *
 from django.http import HttpResponseRedirect, JsonResponse
 from .forms import *
 from .models import *
+from bag.models import Order
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
@@ -102,6 +104,8 @@ def product_detail(request, product_id):
     return render(request, 'home/product_detail.html', {'product': product})
 
 
+@login_required
+@user_passes_test(lambda user: user.is_superuser)
 def edit_product(request, product_id):
     product_data = Product.objects.get(id=int(product_id))
     if request.method == 'POST':
@@ -130,6 +134,30 @@ def edit_product(request, product_id):
                   {'product': product_data})
 
 
+@login_required
+@user_passes_test(lambda user: user.is_superuser)
 def delete_product(request, product_id):
     Product.objects.filter(id=int(product_id)).delete()
     return HttpResponseRedirect('/products')
+
+
+@login_required
+def view_profile(request):
+    """ This function dsiplay the user profile and his/her order details """
+
+    order = Order.objects.filter(user_id=request.user.id).all()
+    if len(order) == 0:
+        has_order = False
+    else:
+        has_order = True
+    result = []
+    order_dates = [o.order_date.strftime('%d, %b %Y') for o in order]
+    if has_order:
+        order_res = [json.loads(o.original_bag) for o in order]
+        for i, bags in enumerate(order_res):
+            for bag in bags:
+                if bag not in result:
+                    bag['order_date'] = order_dates[i]
+                    result.append(bag)
+    print("result", order_dates)
+    return render(request, 'home/profile.html', {'orders': result})
