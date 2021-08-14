@@ -1,1 +1,1 @@
-web: gunicorn coffeehouse.wsgi
+web: gunicorn boxing_gym.wsgi
