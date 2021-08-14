@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block content %}
+    {% if request.user.is_superuser %}
     <a href="{% url 'add_product' %}"> <button type="button" class="btn btn-primary btn-sm">Add new product</button></a>
+    {% endif %}
     <div class="container-fluid">
         <div class="row text-dark">
             <div class="product-container col-10 offset-1">
