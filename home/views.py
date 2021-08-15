@@ -30,6 +30,12 @@ def classes(request):
     return render(request, 'home/classes.html')
 
 
+def contact(request):
+    """ A view to show contact info page """
+
+    return render(request, 'home/contact.html')
+
+
 @login_required
 def select_subscription(request):
     """ A request  to select subscription plan """
