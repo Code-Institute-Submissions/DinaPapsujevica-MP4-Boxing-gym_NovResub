@@ -212,15 +212,10 @@ body {
     width: fit-content;
 }
 
-.shop-now-button {
-    background: black;
-    color: white;
-    min-width: 260px;
-}
-
 .btn-black {
     background: black;
     color: white;
+    border-color: white;
 }
 
 .btn-outline-black {
@@ -242,20 +237,27 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
-    color: white;
+    background: white;
+    color: #222;
 }
 
 .text-black {
-    color: #000 !important;
+  color: #000 !important;
 }
 
-.border-black {
-    border: 1px solid black !important;
-}
+
 
 
 /* -------------------------------- Media Queries */
+/* Small phones to small tablets from 481 to 767px */
+@media (max-width: 767px) {
+  
+
+}
+
+@media (max-width: 992px) {
+  
+}
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
