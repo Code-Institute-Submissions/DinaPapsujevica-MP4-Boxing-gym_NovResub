@@ -7,6 +7,8 @@ from .models import *
 from bag.models import Order
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # Create your views here.
@@ -20,6 +22,16 @@ def index(request):
 
 def trial(request):
     """ A view to show trial sign up page """
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = 'Thank You'
+        message = f'Hi {name}, thank you for registering .'
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+        send_mail(subject, message, email_from, recipient_list)
+        message = "Your request has been submitted"
+        return render(request, 'home/trial.html', {'message': message})
 
     return render(request, 'home/trial.html')
 
@@ -36,7 +48,6 @@ def contact(request):
     return render(request, 'home/contact.html')
 
 
-@login_required
 def select_subscription(request):
     """ A request  to select subscription plan """
     if request.method == 'POST':
@@ -96,7 +107,6 @@ def add_product(request):
     return render(request, "home/add_product.html", context)
 
 
-@login_required
 def view_products(request):
     products = Product.objects.all()
     has_item = len(products) == 0 and request.user.is_superuser
