@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    color: #fff;
+    color: rgba(129, 127, 129, 0.333)
     font-family: 'Lato';
     background-color: #000;
 }
@@ -144,10 +144,6 @@ body {
   .card-combo {
     height: 400px;
   }
-
- 
-/* -------------------------------- Products */
-
   
 /* -------------------------------- Trial sign up */
   .form-signin {
