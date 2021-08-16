@@ -3,7 +3,7 @@
 Milestone Project 4 - Full Stack Frameworks with Django
 
 The website is created with the purpose to build an active community of boxing lovers.
-The site will target the people who would like to start doing boxing and looking for a small but authentic boxing gym in London.
+The site will target the people who would like to start doing boxing and looking for a small but authentic boxing gym.
 The business logic behind this website is to sell more subscription plans.
 Existing members can easily change their subscription plan and buy boxing equipment in the site's Shop section. 
 
@@ -25,14 +25,14 @@ As a first time User I want:
 -	To contact gym
 -	To sign up for trial class
 -	To see list of products
--	To view individual product details
 
 As a gym member I want:
 -	To Log in and Log Out in my profile
--	To view my subscription and purchases
+-   To view individual product details
+-	To view my previous purchases
 -	To change my fitness plan
 -	Easily to recover my password in case I forget it
--	Easily select the size and quantity of a product when purchasing it
+-	Easily select quantity of a product when purchasing it
 
 As a site owner I want:
 -	To manage all member data
@@ -49,10 +49,12 @@ Font family for texts was choosen Lato.
 
 ### Colors
 
-The website's background color was chosen black with the light texts and elements on it.
-As CTA element color was chosen red to create contrast on the page.
+The website's background color was chosen black with the light texts and light elements on it.
+As CTA element color was chosen red to create the contrast on the page.
 
 ### Icons
+
+Icons were chosen to use as a design element on the landing page. The icon color is red, to stand out on the page.
 
 Website consists of 11 sections:
 
@@ -65,11 +67,10 @@ Website consists of 11 sections:
 - **Shopping bag**
 - **Checkout**
 - **Contact** 
-- **My account**
 - **User profile page**
 
 Wireframes are available here:
-![Landing page]()
+![Landing page](/media/wireframes/landing.png)
 
 ## Features
 
