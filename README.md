@@ -70,13 +70,14 @@ Website consists of 11 sections:
 - **User profile page**
 
 Wireframes are available here:
+
 ![Landing page](/media/wireframes/landing.png)
 ![Landing page mob](/media/wireframes/landing-mob.png)
 ![Fitness plans](/media/wireframes/plans-tab.png)
 ![Trial session](/media/wireframes/trial.png)
 ![Shop](/media/wireframes/Shop.png)
-![Shopping bag](/media/wireframes/shopping-bag.png)
-![Shopping bag](/media/wireframes/shopping-bag.png)
+![Shopping bag](/media/wireframes/shopping-bag1.png)
+
 
 ## Features
 
