@@ -101,9 +101,26 @@ As a user, you can read more detailed about the boxing classes and times by clic
 
 ### Shop
 
+As a user, you can see boxing equipment in the website's Shop section. You need to be registered to make a purchase. Once the user press on the product, Sign in form appears. After signing in, the product detail section opens, where user can read more detailed about the product, choose quantity and add the product to the shopping bag, or keep shopping by choosing one of the CTA options. 
+Once the user is taken to the Shopping bag section there are options to update the quantity or remove the product from the bag. As a user, you can see the product image, info, and total price. Two CTA options take the user back to the Shop section or Secure checkout where the user is asked to fill in credit card details to finish the purchase.
 
+### Contact
+
+As a user, you can see contact details in the Contact section of the website.
+
+### My Account
+
+As a first-time user, under the section My account you have two options - Register or Login. As a registered user, you have an option My profile, where user can see one's previous purchases if there is any or Logout from the profile.
+
+### Product Management
+
+As an admin, you are able to manage existing products in the webshop.
+If you are logged in with an admin username, your Navbar shows the option Product Management. Pressing the link, an admin has been directed to the product page, where all products are listed in columns and offers the option Edit or Delete them. As an admin, you are able to Add, Edit, or Delete the Product by pressing the CTA buttons. Pressing the button Add new product admin can see a form that needs to be filled in and submitted. After submitting admin has been directed back to the product page where the added product has been listed together with others.
 
 ### Features left to implement
+
+- In the future, I would like to add a booking system to this website, where gym members can book their time for classes.
+- I would like to implement that members can see on their Profile page what fitness plan they have and when is the next automatic payment for it. Also the option to replace existing fitness plans with the new one.
 
 ## Technologies Used
 
@@ -114,7 +131,7 @@ As a user, you can read more detailed about the boxing classes and times by clic
 - [Bootstrap v5.1](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
 - jQuery
 - Stripe 
-- database??
+- MySQL
 
 
 ## References
