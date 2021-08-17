@@ -74,9 +74,11 @@ Wireframes are available here:
 ![Landing page](/media/wireframes/landing.png)
 ![Landing page mob](/media/wireframes/landing-mob.png)
 ![Fitness plans](/media/wireframes/plans-tab.png)
+![Fitness plans](/media/wireframes/plans.png)
 ![Trial session](/media/wireframes/trial.png)
 ![Shop](/media/wireframes/Shop.png)
 ![Shopping bag](/media/wireframes/shopping-bag1.png)
+![Shopping bag](/media/wireframes/checkout-mob.png)
 
 
 ## Features
