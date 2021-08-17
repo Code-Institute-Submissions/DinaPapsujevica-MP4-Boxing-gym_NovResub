@@ -85,6 +85,24 @@ Wireframes are available here:
 
 ### Existing Features
 
+Navbar on top helps users easy to navigate through the website. Web site's Name in the left corner always brings the user back to the Landing page. On the medium and small sizes, the user can open the navbar from the burger icon on the right top of the website. Section My Account gives user the option to Register or Log In. Only registered users can buy fitness plans or equipment from an online Shop.
+
+### Landing page
+
+The Landing page consists of several parts. The hero section consists of the background image and two CTA buttons. Hero image gives a clear understanding of what is this website about. Further down, there is a training section, where user can see the training this gym offers. Read more link takes the user to the Classes section where is possible to read more details about these training. The Gym facilities section with 6 high-quality images introduces user to the Boxing gym environment. Testimonials and short Boxing gym description follow further down the landing page.
+
+### Join Us
+
+As a user, you are able to read and choose from 3 fitness plans this Boxing gym offers. By clicking CTA Choose Plan user is asked to sign in or sign up for this page. After logging in, the user can pay for a chosen fitness plan, by filling asked credit card details.
+
+### Classes
+
+As a user, you can read more detailed about the boxing classes and times by clicking Classes on the Navigation bar.
+
+### Shop
+
+
+
 ### Features left to implement
 
 ## Technologies Used
