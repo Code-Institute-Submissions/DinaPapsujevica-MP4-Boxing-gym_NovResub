@@ -136,6 +136,11 @@ If you are logged in with an admin username, your Navbar shows the option Produc
 
 ## References
 
+- Code institute video projects, especially Boutique Ado
+- [W3schools](https://www.w3schools.com/)
+- [Stackoverflow](https://stackoverflow.com/)
+- 
+
 ## Testing
 
 For testing code validity i used:
@@ -194,10 +199,17 @@ the same with Procfile - git add Procfile and git commit -m "Add Procfile" and t
 
 ## Content
 
+All the content on this website was written, inspired by several boxing-related websites all over the world.
+
 ### Media
 
-All images for this site was taken from [Unsplash](https://unsplash.com/).
+Images for this site were taken from [Unsplash](https://unsplash.com/).
+Product images were taken from [Google](https://google.com/).
 
 ### Acknowledgements
+
+- I received inspiration for this project from Code Institute Boutique Ado project
+- Slack community
+- My mentor Spencer Barriball
 
 Website is created for educational use!
