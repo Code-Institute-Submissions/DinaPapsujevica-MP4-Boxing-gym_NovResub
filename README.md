@@ -3,7 +3,7 @@
 Milestone Project 4 - Full Stack Frameworks with Django
 
 The website is created with the purpose to build an active community of boxing lovers.
-The site will target the people who would like to start doing boxing and looking for a small but authentic boxing gym in London.
+The site will target the people who would like to start doing boxing and looking for a small but authentic boxing gym.
 The business logic behind this website is to sell more subscription plans.
 Existing members can easily change their subscription plan and buy boxing equipment in the site's Shop section. 
 
@@ -25,14 +25,15 @@ As a first time User I want:
 -	To contact gym
 -	To sign up for trial class
 -	To see list of products
--	To view individual product details
 
 As a gym member I want:
 -	To Log in and Log Out in my profile
--	To view my subscription and purchases
--	To change my fitness plan
+-   To view individual product details
+-	To view my previous purchases
+-	To buy a fitness plan
+-   To buy a products from webshop.
 -	Easily to recover my password in case I forget it
--	Easily select the size and quantity of a product when purchasing it
+-	Easily select quantity of a product when purchasing it
 
 As a site owner I want:
 -	To manage all member data
@@ -49,10 +50,12 @@ Font family for texts was choosen Lato.
 
 ### Colors
 
-The website's background color was chosen black with the light texts and elements on it.
-As CTA element color was chosen red to create contrast on the page.
+The website's background color was chosen black with the light texts and light elements on it.
+As CTA element color was chosen red to create the contrast on the page.
 
 ### Icons
+
+Icons were chosen to use as a design element on the landing page. The icon color is red, to stand out on the page.
 
 Website consists of 11 sections:
 
@@ -65,17 +68,60 @@ Website consists of 11 sections:
 - **Shopping bag**
 - **Checkout**
 - **Contact** 
-- **My account**
 - **User profile page**
 
 Wireframes are available here:
-![Landing page]()
+
+![Landing page](/media/wireframes/landing.png)
+![Landing page mob](/media/wireframes/landing-mob.png)
+![Fitness plans](/media/wireframes/plans-tab.png)
+![Fitness plans](/media/wireframes/plans.png)
+![Trial session](/media/wireframes/trial.png)
+![Shop](/media/wireframes/Shop.png)
+![Shopping bag](/media/wireframes/shopping-bag1.png)
+![Shopping bag](/media/wireframes/checkout-mob.png)
+
 
 ## Features
 
 ### Existing Features
 
+Navbar on top helps users easy to navigate through the website. Web site's Name in the left corner always brings the user back to the Landing page. On the medium and small sizes, the user can open the navbar from the burger icon on the right top of the website. Section My Account gives user the option to Register or Log In. Only registered users can buy fitness plans or equipment from an online Shop.
+
+### Landing page
+
+The Landing page consists of several parts. The hero section consists of the background image and two CTA buttons. Hero image gives a clear understanding of what is this website about. Further down, there is a training section, where user can see the training this gym offers. Read more link takes the user to the Classes section where is possible to read more details about these training. The Gym facilities section with 6 high-quality images introduces user to the Boxing gym environment. Testimonials and short Boxing gym description follow further down the landing page.
+
+### Join Us
+
+As a user, you are able to read and choose from 3 fitness plans this Boxing gym offers. By clicking CTA Choose Plan user is asked to sign in or sign up for this page. After logging in, the user can pay for a chosen fitness plan, by filling asked credit card details.
+
+### Classes
+
+As a user, you can read more detailed about the boxing classes and times by clicking Classes on the Navigation bar.
+
+### Shop
+
+As a user, you can see boxing equipment in the website's Shop section. You need to be registered to make a purchase. Once the user press on the product, Sign in form appears. After signing in, the product detail section opens, where user can read more detailed about the product, choose quantity and add the product to the shopping bag, or keep shopping by choosing one of the CTA options. 
+Once the user is taken to the Shopping bag section there are options to update the quantity or remove the product from the bag. As a user, you can see the product image, info, and total price. Two CTA options take the user back to the Shop section or Secure checkout where the user is asked to fill in credit card details to finish the purchase.
+
+### Contact
+
+As a user, you can see contact details in the Contact section of the website.
+
+### My Account
+
+As a first-time user, under the section My account you have two options - Register or Login. As a registered user, you have an option My profile, where user can see one's previous purchases if there is any or Logout from the profile.
+
+### Product Management
+
+As an admin, you are able to manage existing products in the webshop.
+If you are logged in with an admin username, your Navbar shows the option Product Management. Pressing the link, an admin has been directed to the product page, where all products are listed in columns and offers the option Edit or Delete them. As an admin, you are able to Add, Edit, or Delete the Product by pressing the CTA buttons. Pressing the button Add new product admin can see a form that needs to be filled in and submitted. After submitting admin has been directed back to the product page where the added product has been listed together with others.
+
 ### Features left to implement
+
+- In the future, I would like to add a booking system to this website, where gym members can book their time for classes.
+- I would like to implement that members can see on their Profile page what fitness plan they have and when is the next automatic payment for it. Also the option to replace existing fitness plans with the new one.
 
 ## Technologies Used
 
@@ -86,10 +132,15 @@ Wireframes are available here:
 - [Bootstrap v5.1](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
 - jQuery
 - Stripe 
-- database??
+- MySQL
 
 
 ## References
+
+- Code institute video projects, especially Boutique Ado
+- [W3schools](https://www.w3schools.com/)
+- [Stackoverflow](https://stackoverflow.com/)
+- 
 
 ## Testing
 
@@ -103,21 +154,46 @@ For testing code validity i used:
 ### User stories testing
 
 1. As a first time visitor, I want to immediately understand what is the purpose of this website and easy navigate the site.
+    * Hero image, logo and headline gives clear indications about purpose of the site.
+    * Navigation bar is easy to find and use.
+    * The logo on the left corner always leads back to home page.
+
 2. As a first time visitor, I want to read about the classes the gym offers.
+    * On the home page, there is a section calls Our Group Training, Read more links under each training's description takes to the section Classes & Time table, where all information about the classes is listed.
+    * On the navigation bar there is section name Classes, which takes directly to the section, where all information about the classes is listed.
+
 3. As a first time visitor, I want to see prices for fitness plans.
+    * CTA button Join Now on hero image takes to the section with all fitness plan offers.
+    * On the navigation bar, section Join Us takes to the section with all fitness plan offers.
+
 4. As a first time visitor, I want to see timetable for classes.
+    * On the home page, there is a section calls Our Group Training, Read more links under each training's description takes to the section Classes & Time table, where is the timetable for all classes.
+    * On the navigation bar there is section Classes, which takes directly to the section, where is the timetable for all classes.
+
 5. As a first time visitor, I want to read testimonials.
+    * On the home page, there is a section What Our Members Say with testimonials from existing gym members.
+
 6. As a first time visitor, I want to contact gym.
+    * On the navigation bar, there is a section Contact, which takes to the gym contact page.
+
 7. As a first time visitor, I want to sign up for trial class.
+    * CTA button Sign Up For Free Trial on hero image takes to Sign Up form.
+    * Filling the form and clicking Send, flashes the message "YOUR REQUEST HAS BEEN SUBMITTED" and the confirmation email has been received.
+    * The form can be submitted only after checking the Terms and Conditions agreement box under the form.
+    * Correct type of email should be entered.
+
 8. As a first time visitor, I want to see list of products.
-9. As a first time visitor, I want to view individual product details.
+    * On the navigation bar, there is a section Shop where all available products are shown.
+
 10. As a gym member, I want to Log in and Log Out in my profile.
 11. As a gym member, I want to view my subscription and purchases.
-11. As a gym member, I want to change my fitness plan.
-12. As a gym member, I want easily to recover my password in case I forget it.
-13. As a gym member, I want easily select the size and quantity of a product when purchasing it.
-14. As a site owner, I want to manage all member data.
-15. As a site owner, I want to add and delete products and fitness plans.
+12. As a gym member, I want to buy a fitness plan.
+13. As a gym member, I want to buy a products from webshop.
+13. As a gym member, I want to view individual product details.
+14. As a gym member, I want easily to recover my password in case I forget it.
+15. As a gym member, I want easily select the size and quantity of a product when purchasing it.
+16. As a site owner, I want to manage all member data.
+17. As a site owner, I want to add and delete products and fitness plans.
 
 ## Deployment
 
@@ -149,10 +225,17 @@ the same with Procfile - git add Procfile and git commit -m "Add Procfile" and t
 
 ## Content
 
+All the content on this website was written, inspired by several boxing-related websites all over the world.
+
 ### Media
 
-All images for this site was taken from [Unsplash](https://unsplash.com/).
+Images for this site were taken from [Unsplash](https://unsplash.com/).
+Product images were taken from [Google](https://google.com/).
 
 ### Acknowledgements
+
+- I received inspiration for this project from Code Institute Boutique Ado project
+- Slack community
+- My mentor Spencer Barriball
 
 Website is created for educational use!

@@ -31,7 +31,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 {% else %}
 {% endif %}
 
-<main class="form-signin pb-5">
+<main class="form-signin pb-5 text-secondary">
   <p class="text-light">{% blocktrans %}If you have not created an account yet, then please
     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
   {% if form.errors %}
@@ -60,12 +60,6 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
     <div class="form-floating mb-3">
       <input type="password" name="password" class="form-control" id="floatingInput" placeholder="Password">
       <label for="floatingInput">Password</label>
-    </div>
-
-    <div class="checkbox mb-3 text-light">
-      <label>
-        <input type="checkbox" value="remember-me"> Agree to terms and conditions
-      </label>
     </div>
     <button type="submit" class="w-100 btn btn-lg btn-combo text-uppercase">Log In</button>
 </form>

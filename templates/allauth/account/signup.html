@@ -23,7 +23,7 @@
             </div>
         {% endfor %}
     {% endif %}
-  <form class="signup text-black pb-5" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  <form class="signup text-secondary pb-5" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
     <div class="form-floating mb-3 ">
       <input type="email" name="email" class="form-control" id="floatingInput" aria-describedby="emailHelp" placeholder="E-mail address">
@@ -48,7 +48,7 @@
 
     <div class="checkbox mb-3 text-light">
       <label>
-        <input type="checkbox" value="remember-me"> Agree to terms and conditions
+        <input type="checkbox" value="remember-me" required> Agree to terms and conditions
       </label>
     </div>
     <button type="submit" class="w-100 btn btn-lg btn-combo text-uppercase">Sign Up</button>

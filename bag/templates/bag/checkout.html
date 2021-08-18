@@ -7,7 +7,7 @@
             <div class="col-12">
                 <h4 class="pb-1 pt-5 text-light text-center">You will be paid: $ {{ total }}</h4>
                 <h5 class="pb-2 pt-2 text-light text-center">Enter Stripe Card Detail</h5>
-                <main class="form-signin">
+                <main class="form-signin text-secondary">
                     <form action="{% url 'checkout' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                       <div class="form-floating mb-3">
