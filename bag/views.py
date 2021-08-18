@@ -6,9 +6,12 @@ from .models import *
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
 from home.subscription import generate_card_token, create_payment_charge
+from boxing_gym.verify_request import verify_request
 
 # Create your views here.
 
+
+@verify_request
 @login_required
 def view_shopping_bag(request):
     """
@@ -23,6 +26,7 @@ def view_shopping_bag(request):
     return render(request, 'bag/bag.html', {'bag_items': cart_data, 'has_item': has_item})
 
 
+@verify_request
 @login_required
 def add_to_bag(request, product_id):
     """ Add a quantity of the specified product to the shoppingbag """
@@ -42,9 +46,6 @@ def add_to_bag(request, product_id):
                          subtotal=subtotal, total=total, shipping_price=shipping_price)
         cart_result = [] if 'cart' not in request.session else request.session['cart']
         cart_result.append(cart_data)
-        print("***************************")
-        print(cart_result, cart_data)
-        print("***************************")
         request.session['cart'] = cart_result
         grand_total = sum([float(d['total']) for d in cart_result])
         bag_total = sum([float(d['subtotal']) for d in cart_result])
@@ -57,6 +58,7 @@ def add_to_bag(request, product_id):
         return HttpResponseRedirect('/bags')
 
 
+@verify_request
 @login_required
 def delete_from_shopping_bag(request, pid):
     """Delete the item from the shopping bag"""
@@ -76,6 +78,7 @@ def delete_from_shopping_bag(request, pid):
     return HttpResponseRedirect('/bags')
 
 
+@verify_request
 @login_required
 def update_bag(request):
     if request.method == 'POST':
@@ -103,11 +106,6 @@ def update_bag(request):
                 d['total'] = total
             new_result.append(d)
 
-        print("***************************")
-        print(cart_data)
-        print("***************************")
-        print(new_result)
-        print("***************************")
         request.session['cart'] = new_result
         grand_total = sum([float(d['total']) for d in new_result])
         bag_total = sum([float(d['subtotal']) for d in new_result])
@@ -120,6 +118,7 @@ def update_bag(request):
         return HttpResponseRedirect('/bags')
 
 
+@verify_request
 @login_required
 def checkout_stripe_payment(request):
     """ A request api to handle stripe payment form stripe """
@@ -154,6 +153,7 @@ def checkout_stripe_payment(request):
     return render(request, 'bag/checkout.html', {'total': request.session['grand_total']})
 
 
+@verify_request
 @login_required
 def complete_shoping(request):
     return render(request, 'bag/thankyou.html')

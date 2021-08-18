@@ -1,0 +1,11 @@
+Here on the project I have been used few external libraries in order to accomplish the functionality of the project
+
+The external python libraries are listed below:
+1. stripe (for payment gateway)
+    link: https://stripe.com/docs/api
+2. Django allauth for user/admin management
+    link: https://django-allauth.readthedocs.io/en/latest/installation.html#django
+3. Gunicorn for running application on server
+    links:
+        - https://docs.gunicorn.org/en/stable/run.html
+        - https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/gunicorn/

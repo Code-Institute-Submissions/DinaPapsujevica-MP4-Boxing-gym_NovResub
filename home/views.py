@@ -9,17 +9,19 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from django.core.mail import send_mail
 from django.conf import settings
-
+from boxing_gym.verify_request import verify_request
 
 # Create your views here.
 
 
+@verify_request
 def index(request):
     """ A view to return the index page """
 
     return render(request, 'home/index.html')
 
 
+@verify_request
 def trial(request):
     """ A view to show trial sign up page """
     if request.method == 'POST':
@@ -36,6 +38,7 @@ def trial(request):
     return render(request, 'home/trial.html')
 
 
+@verify_request
 def classes(request):
     """ A view to show trial sign up page """
 
@@ -48,6 +51,7 @@ def contact(request):
     return render(request, 'home/contact.html')
 
 
+@verify_request
 def select_subscription(request):
     """ A request  to select subscription plan """
     if request.method == 'POST':
@@ -64,6 +68,7 @@ def select_subscription(request):
     return render(request, 'home/fitnessplans.html')
 
 
+@verify_request
 @login_required
 def create_stripe_subsription(request):
     """ A request  to handle subscription payment form stripe """
@@ -85,11 +90,12 @@ def create_stripe_subsription(request):
         sub_data = dict(customer_id=subscription['customer_id'], name=subscription['name'],
                         amount=subscription['amount'], status=True,
                         method='stripe', payment_id=sub['id'])
-        return HttpResponseRedirect('/classes')
+        return HttpResponseRedirect('/thanks')
 
     return render(request, 'home/payment.html')
 
 
+@verify_request
 @login_required
 @user_passes_test(lambda user: user.is_superuser)
 def add_product(request):
@@ -107,6 +113,7 @@ def add_product(request):
     return render(request, "home/add_product.html", context)
 
 
+@verify_request
 def view_products(request):
     products = Product.objects.all()
     has_item = len(products) == 0 and request.user.is_superuser
@@ -114,12 +121,14 @@ def view_products(request):
     return render(request, 'home/products.html', {'products': products, 'has_item': has_item})
 
 
+@verify_request
 @login_required
 def product_detail(request, product_id):
     product = Product.objects.get(id=int(product_id))
     return render(request, 'home/product_detail.html', {'product': product})
 
 
+@verify_request
 @login_required
 @user_passes_test(lambda user: user.is_superuser)
 def edit_product(request, product_id):
@@ -150,6 +159,7 @@ def edit_product(request, product_id):
                   {'product': product_data})
 
 
+@verify_request
 @login_required
 @user_passes_test(lambda user: user.is_superuser)
 def delete_product(request, product_id):
@@ -157,6 +167,7 @@ def delete_product(request, product_id):
     return HttpResponseRedirect('/products')
 
 
+@verify_request
 @login_required
 def view_profile(request):
     """ This function dsiplay the user profile and his/her order details """
@@ -177,3 +188,9 @@ def view_profile(request):
                     result.append(bag)
     print("result", order_dates)
     return render(request, 'home/profile.html', {'orders': result})
+
+
+@verify_request
+def subscribe(request):
+    """ lead to thank you for subscribing page"""
+    return render(request, 'home/subscribe.html')

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row text-light">
+            <div class="col text-center mt-3">
+                <h2 class="pb-5 pt-5 text-uppercase text-light text-center">500 - Internal Server Error</h2>
+                <p> There is a problem with the resource you are looking for, and it cannot be displayed</p>
+            </div>
+            <a href="{% url 'home' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase">Go to homepage</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+{% endblock %}
