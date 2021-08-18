@@ -30,7 +30,8 @@ As a gym member I want:
 -	To Log in and Log Out in my profile
 -   To view individual product details
 -	To view my previous purchases
--	To change my fitness plan
+-	To buy a fitness plan
+-   To buy a products from webshop.
 -	Easily to recover my password in case I forget it
 -	Easily select quantity of a product when purchasing it
 
@@ -153,21 +154,46 @@ For testing code validity i used:
 ### User stories testing
 
 1. As a first time visitor, I want to immediately understand what is the purpose of this website and easy navigate the site.
+    * Hero image, logo and headline gives clear indications about purpose of the site.
+    * Navigation bar is easy to find and use.
+    * The logo on the left corner always leads back to home page.
+
 2. As a first time visitor, I want to read about the classes the gym offers.
+    * On the home page, there is a section calls Our Group Training, Read more links under each training's description takes to the section Classes & Time table, where all information about the classes is listed.
+    * On the navigation bar there is section name Classes, which takes directly to the section, where all information about the classes is listed.
+
 3. As a first time visitor, I want to see prices for fitness plans.
+    * CTA button Join Now on hero image takes to the section with all fitness plan offers.
+    * On the navigation bar, section Join Us takes to the section with all fitness plan offers.
+
 4. As a first time visitor, I want to see timetable for classes.
+    * On the home page, there is a section calls Our Group Training, Read more links under each training's description takes to the section Classes & Time table, where is the timetable for all classes.
+    * On the navigation bar there is section Classes, which takes directly to the section, where is the timetable for all classes.
+
 5. As a first time visitor, I want to read testimonials.
+    * On the home page, there is a section What Our Members Say with testimonials from existing gym members.
+
 6. As a first time visitor, I want to contact gym.
+    * On the navigation bar, there is a section Contact, which takes to the gym contact page.
+
 7. As a first time visitor, I want to sign up for trial class.
+    * CTA button Sign Up For Free Trial on hero image takes to Sign Up form.
+    * Filling the form and clicking Send, flashes the message "YOUR REQUEST HAS BEEN SUBMITTED" and the confirmation email has been received.
+    * The form can be submitted only after checking the Terms and Conditions agreement box under the form.
+    * Correct type of email should be entered.
+
 8. As a first time visitor, I want to see list of products.
-9. As a first time visitor, I want to view individual product details.
+    * On the navigation bar, there is a section Shop where all available products are shown.
+
 10. As a gym member, I want to Log in and Log Out in my profile.
 11. As a gym member, I want to view my subscription and purchases.
-11. As a gym member, I want to change my fitness plan.
-12. As a gym member, I want easily to recover my password in case I forget it.
-13. As a gym member, I want easily select the size and quantity of a product when purchasing it.
-14. As a site owner, I want to manage all member data.
-15. As a site owner, I want to add and delete products and fitness plans.
+12. As a gym member, I want to buy a fitness plan.
+13. As a gym member, I want to buy a products from webshop.
+13. As a gym member, I want to view individual product details.
+14. As a gym member, I want easily to recover my password in case I forget it.
+15. As a gym member, I want easily select the size and quantity of a product when purchasing it.
+16. As a site owner, I want to manage all member data.
+17. As a site owner, I want to add and delete products and fitness plans.
 
 ## Deployment
 
