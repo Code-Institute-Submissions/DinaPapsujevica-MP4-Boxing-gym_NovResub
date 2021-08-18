@@ -36,8 +36,7 @@ As a gym member I want:
 -	Easily select quantity of a product when purchasing it
 
 As a site owner I want:
--	To manage all member data
--	To add and delete products and fitness plans
+-	To add, edit and delete products in webshop
 
 ### Design Choices
 
@@ -192,8 +191,15 @@ For testing code validity i used:
 13. As a gym member, I want to view individual product details.
 14. As a gym member, I want easily to recover my password in case I forget it.
 15. As a gym member, I want easily select the size and quantity of a product when purchasing it.
-16. As a site owner, I want to manage all member data.
-17. As a site owner, I want to add and delete products and fitness plans.
+
+16. As a site owner, I want to add, edit and delete products in webshop.
+    * Once admin is logged in Product management link is easy to find in the Navigation bar under the section My Account.
+    * Product management page consists of all webshop products and Add, Edit, and Delete CTA.
+    * Clicking the Add new product button opens a form which admin needs to fill in and submit the form by clicking Add Product button.
+    * The new product has been added to the webshop with other products on the Shop page.
+    * Clicking the Edit button opens a form with an existing Product.
+    * Admin can change the information and Update the form or Cancel the action by clicking the Cancel button.
+    * Clicking the Delete button the product has been deleted.
 
 ## Deployment
 
