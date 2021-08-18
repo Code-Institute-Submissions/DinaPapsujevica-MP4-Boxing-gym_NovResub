@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    color: rgba(129, 127, 129, 0.333)
+    color: rgba(129, 127, 129, 0.333);
     font-family: 'Lato';
     background-color: #000;
 }
@@ -258,15 +258,6 @@ body {
 
 
 /* -------------------------------- Media Queries */
-/* Small phones to small tablets from 481 to 767px */
-@media (max-width: 767px) {
-  
-
-}
-
-@media (max-width: 992px) {
-  
-}
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {

@@ -35,7 +35,7 @@ As a gym member I want:
 -	Easily to recover my password in case I forget it
 -	Easily select quantity of a product when purchasing it
 
-As a site owner I want:
+As a admin I want:
 -	To add, edit and delete products in webshop
 
 ### Design Choices
@@ -185,15 +185,27 @@ For testing code validity i used:
     * On the navigation bar, there is a section Shop where all available products are shown.
 
 10. As a gym member, I want to Log in and Log Out in my profile.
-11. As a gym member, I want to view my subscription and purchases.
-12. As a gym member, I want to buy a fitness plan.
-13. As a gym member, I want to buy a products from webshop.
-13. As a gym member, I want to view individual product details.
-14. As a gym member, I want easily to recover my password in case I forget it.
-15. As a gym member, I want easily select the size and quantity of a product when purchasing it.
+    * Sign In link is easy to find on the navigation bar under the section My Account.
+    * Entering wrong Username/Password flashes message "The username and/or password you specified are not correct."
+    * Once the form is submitted opens the home page.
+    * Sign Out link is easy to find on the navigation bar under the section My Account.
+    * After clicking the Sign Out link confirmation question and button opens, which needs to be clicked before being signed out.
 
-16. As a site owner, I want to add, edit and delete products in webshop.
-    * Once admin is logged in Product management link is easy to find in the Navigation bar under the section My Account.
+11. As a gym member, I want to view individual product details.
+    * Only registered users can view individual product details.
+    * Once signed in, clicking on the individual product, opens the product page with product image, description, option to choose the quantity, and Add To Bag CTA.
+
+12. As a gym member, I want To view my previous purchases.
+    * On the navigation bar, under the My Account section clicking My Profile, opens the page with all previous purchases if there is one.  
+
+13. As a gym member, I want to buy a fitness plan.
+    * 
+14. As a gym member, I want to buy a products from webshop.
+15. As a gym member, I want easily to select quantity of a product when purchasing it.
+16. As a gym member, I want easily to recover my password in case I forget it.
+
+16. As a admin, I want to add, edit and delete products in webshop.
+    * Once admin is logged in Product management link is easy to find in the navigation bar under the section My Account.
     * Product management page consists of all webshop products and Add, Edit, and Delete CTA.
     * Clicking the Add new product button opens a form which admin needs to fill in and submit the form by clicking Add Product button.
     * The new product has been added to the webshop with other products on the Shop page.
