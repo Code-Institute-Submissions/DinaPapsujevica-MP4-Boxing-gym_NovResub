@@ -26,7 +26,8 @@
 
     {% block corejs %}
         <script src="https://kit.fontawesome.com/f3b3f003e1.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     {% endblock %}
 
     {% block extra_js %}
@@ -35,45 +36,60 @@
 
     <title>Boxing Gym {% block extra_title %}{% endblock %}</title>
   </head>
+  
   <body>
     <div class="container">
-      <header class="d-flex flex-wrap justify-content-center py-2">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-light text-decoration-none">
+      <header>
+        <nav class="navbar navbar-expand-lg mt-3">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-light text-decoration-none">
           <span class="fs-4">Boxing Gym</span>
-        </a>
-  
-        <ul class="nav nav-pills ">
-          <li class="nav-item"><a href="{% url 'fitnessplans' %}" class="nav-link text-uppercase text-light">Join us</a></li>
-          <li class="nav-item"><a href="{% url 'classes' %}" class="nav-link text-uppercase text-light">Classes</a></li>
-          <li class="nav-item"><a href="{% url 'products' %}" class="nav-link text-uppercase text-light">Shop</a></li>
-          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link text-uppercase text-light">Contact</a></li>
-          <li class="nav-item dropdown">
-            <a class="text-light nav-link" href="#" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="text-center">
-                    <p class="my-0">My Account</p>
-                </div>
-            </a>
-            <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                {% if request.user.is_authenticated %}
-                    {% if request.user.is_superuser %}
-                        <a href="{% url 'products' %}" class="dropdown-item">Product Management</a>
-                    {% endif %}
-                    <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                    <a href="{% url 'account_logout' %}" class="dropdown-item">Sign Out</a>
-                {% else %}
-                    <a href="{% url 'account_signup' %}" class="dropdown-item">Sign Up</a>
-                    <a href="{% url 'account_login' %}" class="dropdown-item">Sign In</a>
-                {% endif %}
-            </div>
-        </li>
-        <li class="nav-item">
-          <a class="{% if request.session.grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'bags' %}">
-              <div class="text-center">
-                  <div><i class="fas fa-shopping-cart fa-lg text-light"></i> $ {{ request.session.grand_total }}</div>
-              </div>
           </a>
-        </li>
-        </ul>
+          <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+            <i class="bi bi-justify"></i>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end text-shadow" id="navbarNav">
+              <ul class="nav nav-pills ">
+                <li class="nav-item"><a href="{% url 'fitnessplans' %}" class="nav-link text-uppercase text-light">Join us</a></li>
+                <li class="nav-item"><a href="{% url 'classes' %}" class="nav-link text-uppercase text-light">Classes</a></li>
+                <li class="nav-item"><a href="{% url 'products' %}" class="nav-link text-uppercase text-light">Shop</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link text-uppercase text-light">Contact</a></li>
+                <li class="nav-item dropdown">
+                  <a class="text-light nav-link" href="#" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                      <div class="text-center">
+                          <p class="my-0">My Account</p>
+                      </div>
+                  </a>
+                  <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                      {% if request.user.is_authenticated %}
+                          {% if request.user.is_superuser %}
+                              <a href="{% url 'products' %}" class="dropdown-item">Product Management</a>
+                          {% endif %}
+                          <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                          <a href="{% url 'account_logout' %}" class="dropdown-item">Sign Out</a>
+                      {% else %}
+                          <a href="{% url 'account_signup' %}" class="dropdown-item">Sign Up</a>
+                          <a href="{% url 'account_login' %}" class="dropdown-item">Sign In</a>
+                      {% endif %}
+                  </div>
+              </li>
+              <li class="nav-item">
+                <a class="{% if request.session.grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'bags' %}">
+                    <div class="text-center">
+                        <div><i class="fas fa-shopping-cart fa-lg text-light"></i> $ {{ request.session.grand_total }}</div>
+                    </div>
+                </a>
+              </li>
+              </ul>
+          </div>
+        </nav>
       </header>
     </div>
     
@@ -110,6 +126,12 @@
     </footer>
 
     {% block postloadjs %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
     {% endblock %}
 
   
