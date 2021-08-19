@@ -7,7 +7,7 @@ The site will target the people who would like to start doing boxing and looking
 The business logic behind this website is to sell more subscription plans.
 Existing members can easily change their subscription plan and buy boxing equipment in the site's Shop section. 
 
-Go to website: 
+Go to website: https://boxing-gym-dp.herokuapp.com/
 
 ## UX
 
@@ -243,15 +243,6 @@ To deploy website to Heroku, I take following steps:
 - From the dashboard, click "Deploy" and choose GitHub as Deployment method. That will setup automatic deployment from GitHub repository.
 - Add my repository name and confirm it by clicking "Connect".
 - From the dashboard, click "Settings" > "Reveal Config Vars".
-
-KEY | VALUE
-----|-----
-IP | 0.0.0.0
-PORT | 5000
-SECRET_KEY | <your_secret_key>
-MONGO_URI | mongodb+srv://<username>:<password>@<cluster_name>.6wwxi.mongodb.net/<database_name>?retryWrites=true&w=majority
-MONGO_DBNAME | <database_name>
-
 - Back in terminal write command git add requirements.txt and git commit -m "Add requirements.txt", 
 the same with Procfile - git add Procfile and git commit -m "Add Procfile" and then git push the project to GitHub.
 - In the heroku dashboard click "Deploy". 
