@@ -31,9 +31,8 @@ As a gym member I want:
 -   To view individual product details
 -	To view my previous purchases
 -	To buy a fitness plan
--   To buy a products from webshop.
+-   To buy a products from webshop
 -	Easily to recover my password in case I forget it
--	Easily select quantity of a product when purchasing it
 
 As a admin I want:
 -	To add, edit and delete products in webshop
@@ -133,13 +132,11 @@ If you are logged in with an admin username, your Navbar shows the option Produc
 - Stripe 
 - MySQL
 
-
 ## References
 
 - Code institute video projects, especially Boutique Ado
 - [W3schools](https://www.w3schools.com/)
-- [Stackoverflow](https://stackoverflow.com/)
-- 
+- [Stackoverflow](https://stackoverflow.com/) 
 
 ## Testing
 
@@ -199,10 +196,30 @@ For testing code validity i used:
     * On the navigation bar, under the My Account section clicking My Profile, opens the page with all previous purchases if there is one.  
 
 13. As a gym member, I want to buy a fitness plan.
-    * 
+    * Only registered users can buy a fitness plan.
+    * Non-registered are asked to Sign In or Sign Up before the purchase.
+    * On the home page, CTA Join Now opens the fitness plan section where offered plans are listed. 
+    * Clicking Choose Plan opens the payment form which needs to be filled in before finishing the payment.
+    * Payment can be finished by clicking CTA button Pay and Subscribe.
+    * At the end of the process, flashes confirmation message, "Thank You for Subscribing" 
+    * If the information in the form has been filled wrong, flashes error message 500 - Internal Server Error and CTA Go To Homepage, which takes back to home page.
+
 14. As a gym member, I want to buy a products from webshop.
-15. As a gym member, I want easily to select quantity of a product when purchasing it.
-16. As a gym member, I want easily to recover my password in case I forget it.
+    * Only registered users can buy products from the webshop.
+    * Non-registered are asked to Sign In or Sign Up before the purchase.
+    * When a chosen product is added to the bag, Shopping Bag page opens.
+    * It is possible to change the quantity of the product or delete the product from the bag and return to the shopping page.
+    * To confirm the purchase is possible by clicking CTA Secure Checkout, which takes to card detail form.
+    * The total amount is still visible above the form.
+    * The card detail form needs to be filled with payment card information and approved by clicking CTA Pay, which finishes the purchase.
+    * After clicking the confirmation button, flashes message "Thank You For Purchasing!".
+    * If the information in the form has been filled wrong, flashes error message 500 - Internal Server Error and CTA Go To Homepage, which takes back to home page.
+
+15. As a gym member, I want easily to recover my password in case I forget it.
+    * Under Sign In form, there is the link Forgot Password?, which takes to the Password Reset page.
+    * Entering email address and clicking CTA Reset My Password, flashes confirmation message, that the email with link has been sent.
+    * After receiving the email and clicking the password reset link, opens a page with the option to change the password.
+    * By typing a new password two times and confirming it, the password has been changed. Flashes message "Your password is now changed".
 
 16. As a admin, I want to add, edit and delete products in webshop.
     * Once admin is logged in Product management link is easy to find in the navigation bar under the section My Account.
@@ -243,7 +260,7 @@ the same with Procfile - git add Procfile and git commit -m "Add Procfile" and t
 
 ## Content
 
-All the content on this website was written, inspired by several boxing-related websites all over the world.
+All the content on this website was written, inspired by several boxing-related websites and forums all over the world.
 
 ### Media
 
