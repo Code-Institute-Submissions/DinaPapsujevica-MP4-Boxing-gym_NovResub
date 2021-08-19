@@ -12,7 +12,7 @@ Go to website: https://boxing-gym-dp.herokuapp.com/
 ## UX
 
 ### Mockup
-![Boxing gym mockup]()
+![Boxing gym mockup](/media/mockup.png)
 
 ### User stories
 
