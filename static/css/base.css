@@ -281,8 +281,13 @@ body {
   }
 
   .testimonials-image {
-    height: 60vh;
+    height: 120vh;
     width: auto;
+  }
+
+  .contact img {
+    width: 80%;
+    height: auto;
   }
 }
 /* Slightly larger container on xl screens */
