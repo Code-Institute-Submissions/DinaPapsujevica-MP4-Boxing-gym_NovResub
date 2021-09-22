@@ -1,1 +1,1 @@
-web: gunicorn boxing_gym.wsgi
+web: python manage.py collectstatic --no-input; gunicorn boxing_gym.wsgi

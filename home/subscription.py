@@ -1,8 +1,10 @@
 import stripe
+from django.conf import settings
+from dotenv import load_dotenv
 
-SECRET_KEY = "sk_test_26PHem9AhJZvU623DfE1x4sd"
+load_dotenv()
 
-stripe.api_key = SECRET_KEY
+stripe.api_key = settings.STRIPE_KEY
 
 
 def generate_card_token(email, cardnumber, expmonth, expyear, cvv):
