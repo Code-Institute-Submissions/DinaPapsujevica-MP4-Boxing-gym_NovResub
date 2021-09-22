@@ -10,3 +10,4 @@ sqlparse==0.4.1
 gunicorn
 stripe
 whitenoise
+python-dotenv==0.10.3
