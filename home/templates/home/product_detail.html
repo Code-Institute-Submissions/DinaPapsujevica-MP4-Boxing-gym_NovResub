@@ -11,7 +11,7 @@
                 <div class="image-container my-5">
                     {% if product.image_link %}
                         <a href="{{ product.image_link.url }}" target="_blank">
-                            <img class="card-img-top img-fluid" src="{{ product.image_link.url }}" alt="{{ product.name }}">
+                            <img class="card-img-top img-fluid" src="{% static '' %}{{product.image_link}}" alt="{{ product.name }}">
                         </a>
                         {% else %}
                         <a href="">

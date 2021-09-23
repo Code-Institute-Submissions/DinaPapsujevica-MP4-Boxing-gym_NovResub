@@ -1,5 +1,6 @@
+{% load static %}
 {% if item.image_link %}
-<img class="img-fluid rounded border border-light" src="{{ item.image_link }}" alt="{{ item.name }}">
+<img class="img-fluid rounded border border-light" src="{% static '' %}{{item.image_link}}" alt="{{ item.name }}">
 {% else %}
-<img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
+<img class="img-fluid rounded" src="{{ STATIC_URL }}noimage.png" alt="{{ item.name }}">
 {% endif %}

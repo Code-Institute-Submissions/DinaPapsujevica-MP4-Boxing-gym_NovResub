@@ -118,13 +118,24 @@ def view_products(request):
     products = Product.objects.all()
     has_item = len(products) == 0 and request.user.is_superuser
     print("has_item", has_item)
-    return render(request, 'home/products.html', {'products': products, 'has_item': has_item})
+    product_data = []
+    for product in products:
+        product_data.append({
+            'image': str(product.image_link.url).replace('static/', ''),
+            'name': product.name,
+            'id': product.id,
+            'price': float(product.price),
+            'description': product.description,
+            'sku': product.sku
+        })
+    return render(request, 'home/products.html', {'products': product_data, 'has_item': has_item})
 
 
 @verify_request
 @login_required
 def product_detail(request, product_id):
     product = Product.objects.get(id=int(product_id))
+    product.image_link = str(product.image_link.url).replace('static/', '')
     return render(request, 'home/product_detail.html', {'product': product})
 
 

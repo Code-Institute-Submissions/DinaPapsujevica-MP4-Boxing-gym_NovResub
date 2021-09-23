@@ -37,7 +37,7 @@ def add_to_bag(request, product_id):
         product_data = Product.objects.get(id=int(product_id))
         subtotal = round(float(price) * int(quantity), 2)
         total = subtotal
-        image = str(product_data.image_link.url)
+        image = str(product_data.image_link.url).replace('static/', '')
         shipping_price = '%.2f' % 3 if subtotal < 45 else 0
         total = '%.2f' % total
         subtotal = '%.2f' % subtotal
@@ -88,7 +88,7 @@ def update_bag(request):
         product_data = Product.objects.get(id=int(product_id))
         subtotal = round(float(price) * int(quantity), 2)
         total = subtotal + 3.00 if subtotal < 45 else subtotal
-        image = str(product_data.image_link.url)
+        image = str(product_data.image_link.url).replace('static/', '')
         shipping_price = '%.2f' % 3 if subtotal < 45 else 0
         total = '%.2f' % total
         subtotal = '%.2f' % subtotal

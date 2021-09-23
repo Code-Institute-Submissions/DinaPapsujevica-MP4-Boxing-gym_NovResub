@@ -8,7 +8,7 @@ class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(max_length=500)
     sku = models.CharField(max_length=40, null=True, blank=True)
-    image_link = models.ImageField()
+    image_link = models.ImageField(null=True, blank=True, upload_to='static/uploaded_images')
     name = models.CharField(max_length=500, null=True)
     sizes = models.CharField(max_length=500, null=True)
     price = models.FloatField(null=True)
