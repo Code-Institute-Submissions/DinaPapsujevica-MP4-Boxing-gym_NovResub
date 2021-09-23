@@ -1,3 +1,4 @@
+import os
 import json
 from django.shortcuts import render
 from .subscription import *
@@ -10,6 +11,8 @@ from django.contrib.auth.decorators import user_passes_test
 from django.core.mail import send_mail
 from django.conf import settings
 from boxing_gym.verify_request import verify_request
+from django.core.files.storage import FileSystemStorage
+
 
 # Create your views here.
 
@@ -105,13 +108,12 @@ def add_product(request):
     if request.method == 'POST':
         data = request.POST.dict()
         del data['csrfmiddlewaretoken']
+        image_link = request.FILES.get('image_link')
         data['image_link'] = request.FILES.get('image_link')
         data['user_id'] = request.user.id
         product = Product.objects.create(**data)
-        print("*************************************************")
-        print(product.image_link.url)
-        print(product.image_link.path)
-        print("*************************************************")
+        print("is_uploaded: ",image_link)
+        isupload = handle_uploaded_file(image_link)
         return HttpResponseRedirect('/products')
     context['form'] = form
     return render(request, "home/add_product.html", context)
@@ -125,7 +127,7 @@ def view_products(request):
     product_data = []
     for product in products:
         product_data.append({
-            'image': str(product.image_link.url).replace('static/', ''),
+            'image': build_image_url(product.image_link.url),
             'name': product.name,
             'id': product.id,
             'price': float(product.price),
@@ -139,7 +141,7 @@ def view_products(request):
 @login_required
 def product_detail(request, product_id):
     product = Product.objects.get(id=int(product_id))
-    product.image_link = str(product.image_link.url).replace('static/', '')
+    product.image_link = build_image_url(product.image_link.url)
     return render(request, 'home/product_detail.html', {'product': product})
 
 
@@ -156,6 +158,7 @@ def edit_product(request, product_id):
         price = request.POST.get('price')
         description = request.POST.get('description')
         sizes = request.POST.get('sizes')
+        isupload = handle_uploaded_file(image_link)
         data = dict(name=name, image_link=image_link, sku=sku,
                     description=description, sizes=sizes, price=float(price))
         print("data:", data)
@@ -209,3 +212,19 @@ def view_profile(request):
 def subscribe(request):
     """ lead to thank you for subscribing page"""
     return render(request, 'home/subscribe.html')
+
+
+def build_image_url(file_url):
+    print("file_url", file_url)
+    file_name = file_url.split('/')[-1]
+    file_name = str(file_name)
+    file_link = 'uploaded_images/' + file_name
+    return file_link
+
+
+def handle_uploaded_file(file_name):
+    path = './static/uploaded_images/' + file_name.name
+    if not os.path.exists(path):
+        fs = FileSystemStorage()
+        filename = fs.save(path, file_name)
+    return True
