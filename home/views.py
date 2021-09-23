@@ -108,6 +108,10 @@ def add_product(request):
         data['image_link'] = request.FILES.get('image_link')
         data['user_id'] = request.user.id
         product = Product.objects.create(**data)
+        print("*************************************************")
+        print(product.image_link.url)
+        print(product.image_link.path)
+        print("*************************************************")
         return HttpResponseRedirect('/products')
     context['form'] = form
     return render(request, "home/add_product.html", context)

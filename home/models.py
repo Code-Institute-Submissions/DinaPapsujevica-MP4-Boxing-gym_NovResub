@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(max_length=500)
     sku = models.CharField(max_length=40, null=True, blank=True)
     image_link = models.ImageField(null=True, blank=True, upload_to='static/uploaded_images')
