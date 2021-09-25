@@ -158,7 +158,6 @@ def edit_product(request, product_id):
         price = request.POST.get('price')
         description = request.POST.get('description')
         sizes = request.POST.get('sizes')
-        isupload = handle_uploaded_file(image_link)
         data = dict(name=name, image_link=image_link, sku=sku,
                     description=description, sizes=sizes, price=float(price))
         print("data:", data)
@@ -166,6 +165,7 @@ def edit_product(request, product_id):
         product_data.name = name
         if image_link is not None:
             product_data.image_link = image_link
+            isupload = handle_uploaded_file(image_link)
         product_data.description = description
         product_data.sku = sku
         product_data.sizes = sizes
