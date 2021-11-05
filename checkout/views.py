@@ -58,7 +58,7 @@ def create_stripe_subsription(request):
                         method='stripe', payment_id=sub['id'])
         return HttpResponseRedirect('/thanks')
 
-    return render(request, 'home/payment.html')
+    return render(request, 'checkout/payment.html')
 
 
 @verify_request
