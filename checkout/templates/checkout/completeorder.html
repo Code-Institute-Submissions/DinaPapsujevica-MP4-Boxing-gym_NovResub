@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <!-- START HEADER AREA -->
+    <header class="welcome-area">
+        <div class="container">
+            <div class="row border-bottom-line">
+                <div class="col-md-3 col-xs-4 col-sm-4">
+                    <!-- START LOGO  AREA -->
+                    <div class="logo">
+                        <a href="{% url 'home' %}">
+                            <img src="{% static 'assets/images/logo.png' %}" alt="">
+                        </a>
+                    </div>
+                    <!-- END LOGO  AREA -->
+                </div>
+                <div class="col-md-5 col-xs-8 col-sm-8">
+                    <!-- START MENU  AREA -->
+                    <div class="mainmenu">
+                        <div class="navbar navbar-nobg">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-left">
+                                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Our Collection<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            {% for d in request.session.data %}
+                                            <li><a href="{% url 'product' name=d.name %}">{{d.name}}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li><a class="smooth-scroll" href="{% url 'home' %}#ourstory">Our Story</a></li>
+                                    <li><a class="smooth-scroll" href="https://fatimasmails.wixsite.com/coffeehouse" target="_blank">Blog</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MENU  AREA -->
+                </div>
+                <div class="col-md-2 col-xs-8 col-sm-6">
+                    <div class="search-area">
+                        <form class="form-inline" method="POST" action="{% url 'search' %}" enctype="multipart/form-data">
+                            <input class="form-control" type="search" name="searchstring" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-4 text-right col-sm-6">
+                    <div class="header-menu-cart-option">
+                        <ul>
+                            <li class="user-click-option"><a href=""><i class="fa fa-user-circle"></i></a>
+                                <div class="user-area">
+                                    <ul>
+                                        {% if user.is_authenticated %}
+                                        <li><a href="{% url 'userprofile' %}">Profile</a></li>
+                                        <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                                        {% else %}
+                                        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                                        <li><a href="{% url 'account_login' %}">Login</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="head-shhoping-cart"><a href=""><i class="fa fa-shopping-bag"></i></a>
+                                {% if has_item %}
+                                
+                                <div class="head-cart">
+                                    <h2 class="border-line"><i class="fas fa-check"></i> Successfully updated {{cart.name}} to bag!</h2>
+                                    <h3>Your Bag </h3>
+                                    {% for cart in carts %}
+                                    <div class="head-cart-item">
+                                        <img src="{% static '' %}{{cart.image_link}}" alt="">
+                                        <h2>{{cart.name}}</h2>
+                                        <h2>Quantity: {{cart.quantity}}</h2>
+                                        <p>Total Excluding Delivery : ${{cart.subtotal}}<br>Spend $5.00 more for Free Delivery!</p>
+                                        <a class="shopping-bag-cart" href="{% url 'bag' %}">Go to shopping bag </a>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                <div class="head-cart">
+                                    <h2 class="border-line"> Your cart is empty!</h2>
+                                    <a class="shopping-bag-cart" href="{% url 'home' %}#collection">Shop now</a>
+                                </div>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row header-top-part">
+                <!-- START ACCOUNT  AREA -->
+                <div class="col-md-8 col-md-offset-2">
+                    <h1>Thank You!</h1>
+                    <div class="single-account">
+                        <p class="text-center">Your order information is below. A confirmation email will be sent to {{order.email}}</p>
+                    </div>
+                    <div class="order-information">
+                        <h2>Order information:</h2>
+                        <ul>
+                            <li>Order number: <strong>{{request.session.order_id}}</strong></li>
+                            <li>Order date: <strong>{{request.session.order_date}}</strong></li>
+                        </ul>
+                        <br>
+                        <h2>Order details:</h2>
+                        <ul>
+                            {% for cart in carts %}
+                            <li>{{cart.name}}: <strong>1 @ ${{cart.price}} each</strong></li>
+                            {% endfor %}
+                        </ul>
+                        <br>
+                        <h2>Order details:</h2>
+                        <ul>
+                            <li>Full Name: <strong>{{order.name}}</strong></li>
+                            <li>Address 1: <strong>{{order.street_address1}}</strong></li>
+                            <li>Address 2: <strong>{{order.street_address2}}</strong></li>
+                            <li>Town or City:<strong>{{order.town_or_city}}</strong></li>
+                            <li>Postal Code: <strong>{{order.postcode}}</strong></li>
+                            <li>Country: <strong>{{order.country}}</strong></li>
+                            <li>Phone number:<strong>{{order.phone_number}}</strong></li>
+                        </ul>
+                        <br>
+                        <h2>Billing information:</h2>
+                        <ul>
+                            <li>Order total: <strong>${{billing.bag_total}}</strong></li>
+                            <li>Delivery fee: <strong>${{billing.shipping_price}}</strong></li>
+                            <li>Grand Total: <strong>${{billing.grand_total}}</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- / END ACCOUNT  AREA -->
+            </div>
+        </div>
+    </header>
+    <!-- / END HEADER AREA -->
+
+{% endblock %}>
