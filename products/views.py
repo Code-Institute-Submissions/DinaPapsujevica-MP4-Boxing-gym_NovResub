@@ -29,7 +29,7 @@ def add_product(request):
         isupload = handle_uploaded_file(image_link)
         return HttpResponseRedirect('/products')
     context['form'] = form
-    return render(request, "home/add_product.html", context)
+    return render(request, "products/add_product.html", context)
 
 
 @verify_request
