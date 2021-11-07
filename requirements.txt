@@ -12,3 +12,4 @@ gunicorn
 stripe
 whitenoise
 python-dotenv==0.10.3
+Pillow
