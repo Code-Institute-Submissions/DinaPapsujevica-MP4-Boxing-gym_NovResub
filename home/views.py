@@ -54,3 +54,7 @@ def handle_uploaded_file(file_name):
         fs = FileSystemStorage()
         filename = fs.save(path, file_name)
     return True
+
+
+def error_404(request, exception):
+    return render(request, '404.html', {})

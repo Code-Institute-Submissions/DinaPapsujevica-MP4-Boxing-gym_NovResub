@@ -6,6 +6,11 @@
         <div class="row pb-5">
             <div class="col-12">
                 <h2 class="pb-5 pt-5 text-uppercase text-light text-center">Enter Stripe Card Detail</h2>
+                <h5 class="card-title text-center mb-5 fs-2" style="color: red">
+              {% for message in messages %}
+                      {{ message }}
+                  {% endfor %}
+              </h5>
                 <main class="form-signin text-secondary">
                     <form action="{% url 'subscribe' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
