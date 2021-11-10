@@ -201,7 +201,7 @@ For testing code validity i used:
     * On the home page, CTA Join Now opens the fitness plan section where offered plans are listed. 
     * Clicking Choose Plan opens the payment form which needs to be filled in before finishing the payment.
     * Payment can be finished by clicking CTA button Pay and Subscribe.
-    * At the end of the process, flashes confirmation message, "Thank You for Subscribing" 
+    * At the end of the process, flashes confirmation message, "Thank You for Buying" 
     * If the information in the form has been filled wrong, flashes error message 500 - Internal Server Error and CTA Go To Homepage, which takes back to home page.
 
 14. As a gym member, I want to buy a products from webshop.
@@ -230,22 +230,110 @@ For testing code validity i used:
     * Admin can change the information and Update the form or Cancel the action by clicking the Cancel button.
     * Clicking the Delete button the product has been deleted.
 
-## Deployment
+## Database
+- During the development phase I have worked with the **sqlite3** database, which was set by default by Django. 
+- For deployment, I used the **PostgreSQL** database whcih is provided by Heroku. 
 
-The website is hosted usign GitHub and deployed to Heroku.
-I started by creating a new repository with `git init`. Then each update was done by the command `git add -A` and then committing it to my local repo with the command `git commit -m ”message”`.
-Then I uploaded it to my remote repo (Github) using `git push`.
+### ER Diagram
 
-To deploy website to Heroku, I take following steps:
-- Create a requirements.txt file by writing terminal command pip freeze --local > requirements.txt.
-- Create Procfile using terminal command echo web: python app.py > Procfile.
-- Log In into my Heroku.com account and click "New" > "Create New App" button in my dashboard. Give it a name and set the region to Europe.
-- From the dashboard, click "Deploy" and choose GitHub as Deployment method. That will setup automatic deployment from GitHub repository.
-- Add my repository name and confirm it by clicking "Connect".
-- From the dashboard, click "Settings" > "Reveal Config Vars".
-- Back in terminal write command git add requirements.txt and git commit -m "Add requirements.txt", 
-the same with Procfile - git add Procfile and git commit -m "Add Procfile" and then git push the project to GitHub.
-- In the heroku dashboard click "Deploy". 
+![ER Diagram](media/erd.png)
+
+## Languages used
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+    - HTML5 provides the structure and the content for my project. 
+- [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+    - CSS3 provides the style of the HTML5 elements.
+- [JavaScript](https://nl.wikipedia.org/wiki/JavaScript)
+    - JavaScript provides the interactive elements on the website. 
+- [jQuery](https://jquery.com/)
+    - jQuery is used for implementation of Bootstrap.
+- [Python](https://www.python.org/)
+    - Python provides the backend of the project.
+- [Jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine))
+    - Jinja provides the templating language for Python.
+
+#### Frameworks, libraries & other
+- [Django](https://www.djangoproject.com/) 
+    - The GitPod is used as Python framework for the project.
+- [Gitpod](https://www.gitpod.io/) 
+    - The GitPod is used to develop the project.
+- [Git](https://git-scm.com/)
+    - The Git was used for version control to commit to Git and push to GitHub.
+- [GitHub](https://github.com/)
+    - The GitHub is used to host the project.
+- [Pip3](https://pip.pypa.io/en/stable/)
+    - Pip3 is used for installing the necessary tools, libraries and frameworks.
+- [Heroku](https://heroku.com/)
+    - Heroku is a cloud platform used to host the project and deploy the app.
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+    - Boto3 is used for compatibility in AWS.
+- [Gunicorn](https://pypi.org/project/gunicorn/)
+    - Gunicorn is used to enable deployment to Heroku.
+- [Pycopg2](https://pypi.org/project/gunicorn/)
+    - Pycopg2 is used to enable the PostGreSQL database to connect with Django.
+- [Google Fonts](https://fonts.google.com/)
+    - Google Fonts is used to provide the font roboto for all the text that is used in the project. 
+- [Balsamiq](https://www.balsamiq.com/)
+    - Balsamiq is used to create the mockup designs for the project.
+- [Bootstrap](https://getbootstrap.com/)
+    - Bootstrap is used for the design framework.
+- [Django Crispy Forms ](https://django-crispy-forms.readthedocs.io/en/latest/)
+    - Django Crispy Forms is used to style the Django forms
+- [Stripe](https://stripe.com/en-nl)
+    - Stripe is used for the secure payments. 
+
+## Deployment  
+1. Set up local workspace for Heroku 
+    - In terminal window of your IDE type: `pip3 freeze -- local > requirements.txt.` (The file is needed for Heroku to know which filed to install.)
+    - Create a Procfile with the following text: `web: gunicorn <name app>.wsgi:application` (The file is needed for Heroku to know which file is needed as entry point.)
+    - Push all these files to your GitHub reposity.
+2. Set up Heroku
+    - Create a Heroku account and create a new app and select your region. 
+    - Go to resources in Heroku and search for **postgess**. Select **Hobby dev - Free** and click on the provision button to add it to the project.
+    - Go to the settings app in Heroku and go to **Config Vars**. Click on **Reveal Config Vars** and add the following config variables:
+
+    DATABASE_HOST="database host"
+    DATABASE_NAME="database name"
+    DATABASE_PASSWORD="database password"
+    DATABASE_URL="connection string"
+    DATABASE_USER=""database user"
+    EMAIL_HOST_USER="email"
+    EMAIL_PASSWORD="passwordofemail"
+    SECRET_KEY="django skey"
+    STRIPE_KEY="stripe key"
+
+3. Set up Database
+    - Copy the **DATABASE_URL** (Postgres URL) from the config variables of Heroku and past it into the default database in `setting.py`
+
+    ```
+    DATABASES = {
+        'default': dj_database_url.parse("<DATABASE_URL here>")
+    }
+    ```
+    **NOTE:** This setup for the databases is temporary for deployment to Heroku.
+    - Migrate the models to create the database by the following commands:
+        - `python3 manage.py makemigrations`
+        - `python3 manage.py migrate`
+    - Load the data fixtures for categories and product in this exact order:
+        - `python3 manage.py loaddata categories`
+        - `python3 manage.py loaddata products`
+    - Create a superuser. The superuser has acces to the admin environment.
+        - `python3 manage.py createsuperuser`
+        - Enter your username, email and password.
+    - Now you can remove the DATABASE_URL from `settings.py` and set the 'old' default DATABASE settings.
+    - Adjust the ALLOWED_HOSTS in you settings.py with the following:
+    
+    ```
+    ALLOWED_HOSTS = ['<your Heroku app URL>', 'localhost]
+    ```
+    - Push the code to Github.
+4. Connect with Heroku 
+    - Click on the **Connect to GitHub** section in the deploy tab in Heroku. 
+        - Search your repository to connect with it.
+        - When your repository appears click on **connect** to connect your repository with the Heroku. 
+    - Set automatic deploment: Go to the deploy tab in Heroku and scroll down to **Automatic deployments**. Click on **Enable Automatic Deploys**. By **Manual deploy** click on **Deploy Branch**.
+Heroku will receive the code from Github and host the app using the required packages. 
+Click on **Open app** in the right corner of your Heroku account. The app wil open and the live link is available from the address bar. 
 
 ## Credits
 

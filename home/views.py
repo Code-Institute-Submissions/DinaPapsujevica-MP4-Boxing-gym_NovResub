@@ -23,7 +23,7 @@ def trial(request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         subject = 'Thank You'
-        message = f'Hi {name}, thank you for registering .'
+        message = f'Hi {name}, thank you for registering. We will be sending you further information very soon.'
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [email]
         send_mail(subject, message, email_from, recipient_list)

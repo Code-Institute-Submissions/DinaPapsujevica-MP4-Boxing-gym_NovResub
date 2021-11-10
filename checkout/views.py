@@ -8,6 +8,8 @@ from django.conf import settings
 from dotenv import load_dotenv, find_dotenv
 from bag.models import Order
 from django.contrib import messages
+from django.core.mail import send_mail
+from bag.models import Order
 
 from checkout.subscription import *
 
@@ -29,7 +31,6 @@ def select_subscription(request):
                                                amount=float(price), status=False, method='stripe',
                                                product_id=product)
 
-        print("request.session['subscription']", request.session['subscription'])
         return HttpResponseRedirect('/subscribe/')
 
     return render(request, 'home/fitnessplans.html')
@@ -58,6 +59,27 @@ def create_stripe_subsription(request):
             sub_data = dict(customer_id=subscription['customer_id'], name=subscription['name'],
                             amount=subscription['amount'], status=True,
                             method='stripe', payment_id=sub['id'])
+            # perform email to the customer
+            email = request.user.email
+            subject = 'Thank You For Buying Plan'
+            message = """
+                Hi, 
+                Thank you for buying plan: {name} 
+                at cost of {amount} USD.
+                We will be sending you further information very soon. 
+
+                Thanks,
+                Boxing Gym Team
+
+            """.format(
+                name=request.session['subscription']['name'],
+                amount=request.session['subscription']['amount'],
+            )
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+            send_mail(subject, message, email_from, recipient_list)
+
+            
             return HttpResponseRedirect('/thanks')
 
         return render(request, 'checkout/payment.html')
