@@ -7,7 +7,12 @@
             <div class="col-12">
                 
                 <h4 class="pb-1 pt-5 text-light text-center">You will be paying: $ {{ total }}</h4>
-                <h5 class="pb-2 pt-2 text-light text-center">Enter Stripe Card Detail</h5>
+                <h5 class="pb-2 pt-2 text-light text-center">Enter Your Card Detail</h5>
+                <h5 class="card-title text-center mb-0.5 fs-0.5" style="color: red">
+                    {% for message in messages %}
+                        {{ message }}<br>
+                    {% endfor %}
+                </h5>
                 <main class="form-signin text-secondary">
                     <form action="{% url 'checkout' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}

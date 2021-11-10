@@ -41,6 +41,9 @@ def create_stripe_subsription(request):
     """ A request  to handle subscription payment form stripe """
 
     try:
+        system_messages = messages.get_messages(request)
+        for message in system_messages:
+            print(message)
         subscription = request.session['subscription']
         if request.method == 'POST':
             card_number = request.POST['cardnumber']
@@ -58,8 +61,7 @@ def create_stripe_subsription(request):
             sub_data = dict(customer_id=subscription['customer_id'], name=subscription['name'],
                             amount=subscription['amount'], status=True,
                             method='stripe', payment_id=sub['id'])
-            print('-------')
-            print(request.session['subscription'])
+            
             # perform email to the customer
             email = request.user.email
             subject = 'Thank You For Buying Plan'
@@ -100,6 +102,7 @@ def create_stripe_subsription(request):
     except Exception as e:
         error = "Please enter valid card details !"
         messages.info(request, error)
+        
         return HttpResponseRedirect('/subscribe')
 
 
@@ -115,6 +118,9 @@ def checkout_stripe_payment(request):
     """ A request api to handle stripe payment form stripe """
     try:
         if request.method == 'POST':
+            system_messages = messages.get_messages(request)
+            for message in system_messages:
+                print(message)
             card_number = request.POST['cardnumber']
             card_expyear = request.POST['expyear']
             card_expmonth = request.POST['expmonth']
