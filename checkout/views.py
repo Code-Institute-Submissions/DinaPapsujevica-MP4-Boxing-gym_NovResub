@@ -9,7 +9,6 @@ from dotenv import load_dotenv, find_dotenv
 from bag.models import Order
 from django.contrib import messages
 from django.core.mail import send_mail
-from bag.models import Order
 
 from checkout.subscription import *
 
@@ -59,6 +58,8 @@ def create_stripe_subsription(request):
             sub_data = dict(customer_id=subscription['customer_id'], name=subscription['name'],
                             amount=subscription['amount'], status=True,
                             method='stripe', payment_id=sub['id'])
+            print('-------')
+            print(request.session['subscription'])
             # perform email to the customer
             email = request.user.email
             subject = 'Thank You For Buying Plan'
@@ -79,6 +80,19 @@ def create_stripe_subsription(request):
             recipient_list = [email]
             send_mail(subject, message, email_from, recipient_list)
 
+            # also insert this in order list
+            order_info = dict(
+                order_number=str(random.randint(123452, 984793)),
+                user_id=request.user.id,
+                stripe_pid=sub['id'],
+                original_bag=json.dumps([
+                    {'name': request.session['subscription']['name'], 'quantity': '1', 'price': subscription['amount'], 'subtotal': subscription['amount'], 'total': subscription['amount']}
+                ]),
+                order_total=subscription['amount'],
+                grand_total=subscription['amount']
+            )
+
+            Order.objects.create(**order_info)
             
             return HttpResponseRedirect('/thanks')
 
@@ -121,10 +135,32 @@ def checkout_stripe_payment(request):
                                   )
 
                 Order.objects.create(**order_info)
+                product_name = request.session['cart'][0]['name']
+                
+                print(product_name)
                 del request.session['cart']
                 del request.session['bag_total']
                 del request.session['grand_total']
                 del request.session['has_item']
+
+            # perform email to the customer
+            email = request.user.email
+            subject = f'Thank You For Buying {product_name}'
+            message = """
+                Hi, 
+                Thank you for buying {name}
+                We will be sending you further information very soon. 
+
+                Thanks,
+                Boxing Gym Team
+
+            """.format(
+                name=product_name,
+            )
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+            send_mail(subject, message, email_from, recipient_list)
+
             return render(request, 'bag/thankyou.html')
         return render(request, 'checkout/checkout.html', {'total': request.session['grand_total']})
 
